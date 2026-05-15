@@ -266,11 +266,11 @@ main {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  min-height: min(780px, calc(100vh - var(--nav-height)));
-  min-height: min(780px, calc(100svh - var(--nav-height)));
-  padding: clamp(46px, 6.2vw, 84px) 0 clamp(52px, 6vw, 78px);
+  min-height: min(680px, calc(100vh - var(--nav-height)));
+  min-height: min(680px, calc(100svh - var(--nav-height)));
+  padding: clamp(42px, 5vw, 72px) 0 clamp(36px, 4.6vw, 56px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   border-bottom: 1px solid var(--line);
   background: linear-gradient(
     112deg,
@@ -594,14 +594,16 @@ main {
 
 .showcase-card-fill img,
 .showcase-card-fill .showcase-video {
-  transform: scale(1.14);
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.01);
 }
 
 .showcase-card-fill:hover img,
 .showcase-card-fill:focus-visible img,
 .showcase-card-fill:hover .showcase-video,
 .showcase-card-fill:focus-visible .showcase-video {
-  transform: scale(1.18);
+  transform: scale(1.04);
 }
 
 @keyframes rise-in {
@@ -882,7 +884,6 @@ main {
 
 .showcase-card[href="#video-editing"] img,
 .showcase-card[href="#video-editing"] .showcase-video {
-  object-fit: contain;
   background: #050504;
 }
 
