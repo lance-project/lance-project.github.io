@@ -998,6 +998,80 @@ function initCitationCopy() {
   });
 }
 
+function initMetricColumnFrames() {
+  document.querySelectorAll(".metric-frame-layer").forEach((frameLayer) => {
+    const table = frameLayer.querySelector(".highlight-metric-table");
+    const container = frameLayer.querySelector(".benchmark-container");
+    const highlightColumn = Number(frameLayer.dataset.highlightColumn || 3);
+    const modelHeader = table?.querySelector("thead th:nth-child(1)");
+    const paramsHeader = table?.querySelector("thead th:nth-child(2)");
+    const headerCell = table?.querySelector(`thead th:nth-child(${highlightColumn})`);
+    if (
+      !table ||
+      !container ||
+      !modelHeader ||
+      !paramsHeader ||
+      !headerCell
+    ) {
+      return;
+    }
+
+    const frame = document.createElement("div");
+    frame.className = "metric-column-frame";
+    frame.setAttribute("aria-hidden", "true");
+    frameLayer.append(frame);
+
+    let frameRequest = null;
+
+    const updateFrame = () => {
+      if (frameRequest) return;
+      frameRequest = requestAnimationFrame(() => {
+        frameRequest = null;
+        const modelWidth = modelHeader.getBoundingClientRect().width;
+        const paramsWidth = paramsHeader.getBoundingClientRect().width;
+        const highlightWidth = headerCell.getBoundingClientRect().width;
+        table.style.setProperty("--summary-model-col", `${modelWidth}px`);
+        table.style.setProperty("--summary-param-col", `${paramsWidth}px`);
+        table.style.setProperty("--summary-highlight-col", `${highlightWidth}px`);
+
+        const frameLayerRect = frameLayer.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        const tableRect = table.getBoundingClientRect();
+        const frameBleedStart = 10;
+        const frameBleedEnd = 10;
+        const frameOutsetY = 18;
+        const pinnedLeft =
+          containerRect.left +
+          container.clientLeft +
+          modelWidth +
+          paramsWidth;
+        const left = pinnedLeft - frameLayerRect.left - frameBleedStart;
+        const top = tableRect.top - frameLayerRect.top - frameOutsetY;
+        const width = highlightWidth + frameBleedStart + frameBleedEnd;
+        const height = tableRect.height + frameOutsetY * 2;
+
+        frame.style.left = `${left}px`;
+        frame.style.top = `${top}px`;
+        frame.style.width = `${width}px`;
+        frame.style.height = `${height}px`;
+      });
+    };
+
+    updateFrame();
+    container.addEventListener("scroll", updateFrame, { passive: true });
+    window.addEventListener("resize", updateFrame, { passive: true });
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(updateFrame);
+    }
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(updateFrame);
+      observer.observe(table);
+      observer.observe(container);
+      observer.observe(frameLayer);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initShowcaseVideos();
   const lightbox = initVideoLightbox();
@@ -1005,4 +1079,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initImageLightbox(lightbox?.openImage);
   initUnderstandingCaseLightboxes(lightbox?.openVideo, lightbox?.openImage);
   initCitationCopy();
+  initMetricColumnFrames();
 });
