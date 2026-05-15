@@ -1437,6 +1437,12 @@ main {
   box-shadow: 10px 0 18px -18px rgba(216, 181, 102, 0.8);
 }
 
+.benchmark-table.vbench-table.highlight-metric-table th:nth-child(3),
+.benchmark-table.vbench-table.highlight-metric-table td:nth-child(3) {
+  width: 118px;
+  min-width: 118px;
+}
+
 .benchmark-table.highlight-metric-table th:nth-child(2),
 .benchmark-table.highlight-metric-table td:nth-child(2) {
   position: sticky;

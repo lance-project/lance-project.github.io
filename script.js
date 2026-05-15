@@ -1037,17 +1037,16 @@ function initMetricColumnFrames() {
         const frameLayerRect = frameLayer.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const tableRect = table.getBoundingClientRect();
-        const frameBleedStart = 10;
-        const frameBleedEnd = 10;
+        const frameInsetX = 6;
         const frameOutsetY = 18;
         const pinnedLeft =
           containerRect.left +
           container.clientLeft +
           modelWidth +
           paramsWidth;
-        const left = pinnedLeft - frameLayerRect.left - frameBleedStart;
+        const left = pinnedLeft - frameLayerRect.left + frameInsetX;
         const top = tableRect.top - frameLayerRect.top - frameOutsetY;
-        const width = highlightWidth + frameBleedStart + frameBleedEnd;
+        const width = Math.max(highlightWidth - frameInsetX * 2, 40);
         const height = tableRect.height + frameOutsetY * 2;
 
         frame.style.left = `${left}px`;
