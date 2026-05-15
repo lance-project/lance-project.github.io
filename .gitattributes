@@ -13,6 +13,7 @@
 *.gif binary
 *.webp binary
 *.ico binary
+*.pdf binary
 *.mp4 binary
 *.mov binary
 *.webm binary
