@@ -811,17 +811,13 @@ function initShowcaseVideos() {
 
   const primaryCard = document.querySelector(".showcase-card-large");
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const desktopAutoplayQuery = window.matchMedia(
-    "(min-width: 981px) and (hover: hover) and (pointer: fine)",
-  );
   let primaryInView = true;
 
   const canAutoplayPrimary = () =>
     Boolean(primaryCard) &&
     primaryInView &&
     !document.hidden &&
-    !motionQuery.matches &&
-    desktopAutoplayQuery.matches;
+    !motionQuery.matches;
 
   const stopCard = (card, reset = false) => {
     const video = card.querySelector(".showcase-video");
@@ -845,9 +841,13 @@ function initShowcaseVideos() {
     if (!video) return;
 
     stopAll(card);
+    video.defaultMuted = true;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
     if (options.isAutoplay) {
       video.preload = "auto";
     }
@@ -880,11 +880,22 @@ function initShowcaseVideos() {
     const video = card.querySelector(".showcase-video");
     if (!video) return;
 
-    video.autoplay = false;
+    const isPrimary = card === primaryCard;
+    video.autoplay = isPrimary;
+    video.defaultMuted = true;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
-    video.preload = "none";
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    if (isPrimary) {
+      video.setAttribute("autoplay", "");
+      video.preload = "auto";
+    } else {
+      video.removeAttribute("autoplay");
+      video.preload = "none";
+    }
     video.pause();
 
     card.addEventListener("mouseenter", () => playCard(card));
@@ -942,7 +953,7 @@ function initShowcaseVideos() {
     }
   });
 
-  [motionQuery, desktopAutoplayQuery].forEach((query) => {
+  [motionQuery].forEach((query) => {
     if (typeof query.addEventListener === "function") {
       query.addEventListener("change", syncPrimaryAutoplay);
     } else if (typeof query.addListener === "function") {
