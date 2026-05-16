@@ -91,13 +91,22 @@ main {
 }
 
 .nav-brand {
+  display: inline-flex;
   flex: 0 0 auto;
+  align-items: center;
   color: #f8f4ea;
   font-family: "Source Serif 4", Georgia, serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
+}
+
+.nav-logo {
+  width: auto;
+  height: 40px;
+  filter: saturate(0.88) brightness(1.04);
+  object-fit: contain;
 }
 
 .nav-links {
@@ -2182,6 +2191,10 @@ footer a:hover {
 
   .nav-brand {
     font-size: 21px;
+  }
+
+  .nav-logo {
+    height: 30px;
   }
 
   .nav-link {
