@@ -346,14 +346,16 @@
         </h2>
         <p class="section-copy benchmark-overview-copy">
           <span>
-            Radar charts summarize Lance against representative unified and
+            Radar charts compare Lance with representative unified and
             task-specialized baselines.
           </span>
           <span>
-            These comparisons cover image generation, image editing, video
-            generation, and video understanding;
-            <a class="inline-link" href="#geneval">full tables</a> follow
-            below.
+            Detailed tables:
+            <a class="inline-link" href="#geneval">GenEVAL</a>,
+            <a class="inline-link" href="#dpg-bench">DPG-Bench</a>,
+            <a class="inline-link" href="#gedit-bench">GEdit-Bench</a>,
+            <a class="inline-link" href="#vbench">VBench</a>, and
+            <a class="inline-link" href="#mvbench">MVBench</a>.
           </span>
         </p>
         <figure class="benchmark-radar">
@@ -1423,7 +1425,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Overall</th>
+                <th scope="col">Overall&#8593;</th>
                 <th scope="col">Single Obj.</th>
                 <th scope="col">Two Obj.</th>
                 <th scope="col">Counting</th>
@@ -1564,6 +1566,10 @@
             </table>
           </div>
         </div>
+        <p class="benchmark-note">
+          &#8224; indicates methods that use LLM rewriters for prompt rewriting
+          before generation.
+        </p>
       </div>
     </section>
 
@@ -1588,7 +1594,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Overall</th>
+                <th scope="col">Overall&#8593;</th>
                 <th scope="col">Global</th>
                 <th scope="col">Entity</th>
                 <th scope="col">Attribute</th>
@@ -1817,6 +1823,10 @@
             </table>
           </div>
         </div>
+        <p class="benchmark-note">
+          &#8224; indicates methods that use LLM rewriters for prompt rewriting
+          before generation.
+        </p>
       </div>
     </section>
 
@@ -1841,7 +1851,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Avg/G-O</th>
+                <th scope="col">Avg/G-O&#8593;</th>
                 <th scope="col">BC</th>
                 <th scope="col">CA</th>
                 <th scope="col">MM</th>
@@ -2009,6 +2019,55 @@
             </tbody>
             </table>
           </div>
+        </div>
+        <div
+          class="benchmark-note benchmark-abbrev-note"
+          aria-label="GEdit-Bench abbreviation definitions"
+        >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">BC</span
+            ><span class="benchmark-abbrev-value">background_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CA</span
+            ><span class="benchmark-abbrev-value">color_alter</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MM</span
+            ><span class="benchmark-abbrev-value">material_alter</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MC</span
+            ><span class="benchmark-abbrev-value">motion_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">PB</span
+            ><span class="benchmark-abbrev-value">ps_human</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ST</span
+            ><span class="benchmark-abbrev-value">style_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SA</span
+            ><span class="benchmark-abbrev-value">subject-add</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SR</span
+            ><span class="benchmark-abbrev-value">subject-remove</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SRp</span
+            ><span class="benchmark-abbrev-value">subject-replace</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">TM</span
+            ><span class="benchmark-abbrev-value">text_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">TT</span
+            ><span class="benchmark-abbrev-value">tone_transfer</span></span
+          >
         </div>
       </div>
     </section>
@@ -2944,6 +3003,89 @@
             </tbody>
             </table>
           </div>
+        </div>
+        <div
+          class="benchmark-note benchmark-abbrev-note"
+          aria-label="MVBench abbreviation definitions"
+        >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AS</span
+            ><span class="benchmark-abbrev-value">Action Sequence</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AP</span
+            ><span class="benchmark-abbrev-value">Action Prediction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AA</span
+            ><span class="benchmark-abbrev-value">Action Antonym</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">FA</span
+            ><span class="benchmark-abbrev-value">Fine-grained Action</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">UA</span
+            ><span class="benchmark-abbrev-value">Unexpected Action</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OE</span
+            ><span class="benchmark-abbrev-value">Object Existence</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OI</span
+            ><span class="benchmark-abbrev-value">Object Interaction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OS</span
+            ><span class="benchmark-abbrev-value">Object Shuffle</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MD</span
+            ><span class="benchmark-abbrev-value">Moving Direction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AL</span
+            ><span class="benchmark-abbrev-value">Action Localization</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ST</span
+            ><span class="benchmark-abbrev-value">Scene Transition</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AC</span
+            ><span class="benchmark-abbrev-value">Action Count</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MC</span
+            ><span class="benchmark-abbrev-value">Moving Count</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MA</span
+            ><span class="benchmark-abbrev-value">Moving Attribute</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SC</span
+            ><span class="benchmark-abbrev-value">State Change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CO</span
+            ><span class="benchmark-abbrev-value">Character Order</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">EN</span
+            ><span class="benchmark-abbrev-value">Episodic Reasoning</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ER</span
+            ><span class="benchmark-abbrev-value">Egocentric Navigation</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CI</span
+            ><span class="benchmark-abbrev-value"
+              >Counterfactual Inference</span
+            ></span
+          >
         </div>
       </div>
     </section>

@@ -1142,7 +1142,7 @@ function initMetricColumnFrames() {
         const frameLayerRect = frameLayer.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const tableRect = table.getBoundingClientRect();
-        const frameInsetX = 6;
+        const frameInsetX = -6;
         const frameOutsetY = 18;
         const pinnedLeft =
           containerRect.left +
