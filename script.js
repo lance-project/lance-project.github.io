@@ -44,6 +44,32 @@ function initLazyMedia() {
   lazyMedia.forEach((element) => observer.observe(element));
 }
 
+function initNavMore() {
+  const navMoreItems = Array.from(document.querySelectorAll(".nav-more"));
+  if (!navMoreItems.length) return;
+
+  navMoreItems.forEach((item) => {
+    item.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        item.open = false;
+      });
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    navMoreItems.forEach((item) => {
+      if (!item.contains(event.target)) item.open = false;
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    navMoreItems.forEach((item) => {
+      item.open = false;
+    });
+  });
+}
+
 function initVideoLightbox() {
   const dialog = document.querySelector("#video-lightbox");
   const panel = dialog?.querySelector(".video-lightbox-panel");
@@ -1152,6 +1178,7 @@ function initMetricColumnFrames() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initLazyMedia();
+  initNavMore();
   initShowcaseVideos();
   const lightbox = initVideoLightbox();
   initVideoPreviews(lightbox?.openVideo);
