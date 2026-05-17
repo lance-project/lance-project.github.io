@@ -45,3 +45,5 @@ coverage/
 
 # Local generated output
 outputs/
+output/
+.playwright-cli/
