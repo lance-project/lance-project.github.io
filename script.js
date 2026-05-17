@@ -304,8 +304,12 @@ function initVideoLightbox() {
       "Demo";
     const origin = options.origin || item;
     const fullCaption = getReadableText(item.querySelector(".video-full-caption"));
+    const promptLabel =
+      item.dataset.promptLabel ||
+      item.closest(".section")?.dataset.promptLabel ||
+      "Prompt";
     const detailItems = fullCaption
-      ? [...(options.details || []), { label: "Prompt", value: fullCaption }]
+      ? [...(options.details || []), { label: promptLabel, value: fullCaption }]
       : options.details;
 
     returnFocusTo = origin;
