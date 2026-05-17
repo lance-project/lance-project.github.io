@@ -1019,13 +1019,7 @@ main {
 }
 
 .section-image-editing {
-  background:
-    radial-gradient(
-      circle at 82% 20%,
-      rgba(216, 181, 102, 0.075),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(255, 247, 225, 0.015), transparent 62%);
+  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
 }
 
 .image-editing-panel {
@@ -1045,13 +1039,7 @@ main {
 }
 
 .section-understanding {
-  background:
-    radial-gradient(
-      circle at 14% 22%,
-      rgba(216, 181, 102, 0.08),
-      transparent 32%
-    ),
-    linear-gradient(180deg, rgba(255, 247, 225, 0.018), transparent 55%);
+  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
 }
 
 .understanding-grid {
@@ -1167,13 +1155,7 @@ main {
 }
 
 .section-video-understanding {
-  background:
-    radial-gradient(
-      circle at 86% 18%,
-      rgba(216, 181, 102, 0.085),
-      transparent 34%
-    ),
-    linear-gradient(180deg, rgba(255, 247, 225, 0.016), transparent 58%);
+  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
 }
 
 .video-understanding-grid {
