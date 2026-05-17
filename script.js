@@ -15,6 +15,27 @@ function hydrateMediaElement(element) {
   }
 }
 
+function getNetworkConnection() {
+  return (
+    navigator.connection ||
+    navigator.mozConnection ||
+    navigator.webkitConnection ||
+    null
+  );
+}
+
+function hasConstrainedConnection() {
+  const connection = getNetworkConnection();
+  if (!connection) return false;
+
+  const weakTypes = new Set(["slow-2g", "2g", "3g"]);
+  return Boolean(
+    connection.saveData ||
+      weakTypes.has(connection.effectiveType) ||
+      (connection.downlink && connection.downlink <= 1.5),
+  );
+}
+
 function initLazyMedia() {
   const lazyMedia = Array.from(
     document.querySelectorAll("video[data-src], video[data-poster]"),
@@ -36,7 +57,7 @@ function initLazyMedia() {
       });
     },
     {
-      rootMargin: "900px 0px",
+      rootMargin: "400px 0px",
       threshold: 0.01,
     },
   );
@@ -899,13 +920,15 @@ function initShowcaseVideos() {
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   let primaryInView = true;
   let primaryAutoplayEnabled = false;
+  let primaryAutoplayScheduled = false;
 
   const canAutoplayPrimary = () =>
     Boolean(primaryCard) &&
     primaryAutoplayEnabled &&
     primaryInView &&
     !document.hidden &&
-    !motionQuery.matches;
+    !motionQuery.matches &&
+    !hasConstrainedConnection();
 
   const stopCard = (card, reset = false) => {
     const video = card.querySelector(".showcase-video");
@@ -1045,14 +1068,43 @@ function initShowcaseVideos() {
   });
 
   const enablePrimaryAutoplay = () => {
+    primaryAutoplayScheduled = false;
+    if (hasConstrainedConnection()) return;
     primaryAutoplayEnabled = true;
     syncPrimaryAutoplay();
   };
 
-  if (typeof window.requestIdleCallback === "function") {
-    window.requestIdleCallback(enablePrimaryAutoplay, { timeout: 1800 });
-  } else {
-    window.setTimeout(enablePrimaryAutoplay, 1200);
+  const schedulePrimaryAutoplay = () => {
+    if (
+      primaryAutoplayEnabled ||
+      primaryAutoplayScheduled ||
+      hasConstrainedConnection()
+    ) {
+      return;
+    }
+
+    primaryAutoplayScheduled = true;
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(enablePrimaryAutoplay, { timeout: 1800 });
+    } else {
+      window.setTimeout(enablePrimaryAutoplay, 1200);
+    }
+  };
+
+  schedulePrimaryAutoplay();
+
+  const connection = getNetworkConnection();
+  if (connection && typeof connection.addEventListener === "function") {
+    connection.addEventListener("change", () => {
+      if (hasConstrainedConnection()) {
+        primaryAutoplayEnabled = false;
+        primaryAutoplayScheduled = false;
+        if (primaryCard) stopCard(primaryCard, true);
+        return;
+      }
+
+      schedulePrimaryAutoplay();
+    });
   }
 }
 
