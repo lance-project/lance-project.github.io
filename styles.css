@@ -4,7 +4,7 @@
   --surface: #12110d;
   --surface-soft: #17150f;
   --surface-raised: #1c1911;
-  --line: rgba(211, 178, 105, 0.18);
+  --line: rgba(211, 178, 105, 0.1);
   --line-strong: rgba(211, 178, 105, 0.34);
   --text: #f2ecdc;
   --text-muted: #c9c0ab;
@@ -93,7 +93,7 @@ main {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(216, 181, 102, 0.18);
+  border-bottom: 1px solid rgba(216, 181, 102, 0.1);
   background: rgba(7, 7, 6, 0.84);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
@@ -756,9 +756,29 @@ main {
 }
 
 .section {
+  position: relative;
   padding: 52px 0;
-  border-top: 1px solid var(--line);
+  border-top: 0;
   scroll-margin-top: var(--nav-height);
+}
+
+.section::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(calc(100% - 48px), var(--container));
+  height: 1px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    rgba(211, 178, 105, 0) 0%,
+    rgba(211, 178, 105, 0.08) 14%,
+    rgba(211, 178, 105, 0.13) 50%,
+    rgba(211, 178, 105, 0.08) 86%,
+    rgba(211, 178, 105, 0) 100%
+  );
+  pointer-events: none;
+  transform: translateX(-50%);
 }
 
 .benchmark-section {
