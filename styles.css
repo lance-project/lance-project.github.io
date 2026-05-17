@@ -47,6 +47,23 @@ a {
   color: inherit;
 }
 
+.inline-link {
+  color: #f5d58a;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 181, 102, 0.46);
+  text-underline-offset: 3px;
+  transition:
+    color 0.18s ease,
+    text-decoration-color 0.18s ease;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: #fff7e1;
+  text-decoration-color: rgba(255, 247, 225, 0.82);
+}
+
 img,
 video {
   display: block;
@@ -700,6 +717,15 @@ main {
 
 .section-centered .section-copy {
   max-width: 86ch;
+}
+
+.section-centered .benchmark-overview-copy {
+  max-width: 112ch;
+}
+
+.benchmark-overview-copy span {
+  display: block;
+  white-space: nowrap;
 }
 
 #framework .section-copy {
@@ -2120,6 +2146,10 @@ footer a:hover {
 
   .section-title {
     font-size: 32px;
+  }
+
+  .benchmark-overview-copy span {
+    white-space: normal;
   }
 
   .video-grid {
