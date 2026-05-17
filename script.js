@@ -488,7 +488,7 @@ function initUnderstandingCaseLightboxes(openVideo, openImage) {
       value: getReadableText(card.querySelector(".video-understanding-primary")),
     },
     {
-      label: "Answer",
+      label: "Response",
       value: getReadableText(card.querySelector(".video-understanding-answer")),
     },
   ];
@@ -499,7 +499,7 @@ function initUnderstandingCaseLightboxes(openVideo, openImage) {
       value: getReadableText(card.querySelector(".understanding-question")),
     },
     {
-      label: "Answer",
+      label: "Response",
       value: getAnswerText(card.querySelector(".understanding-answer")),
     },
   ];
