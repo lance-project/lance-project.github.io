@@ -15,27 +15,6 @@ function hydrateMediaElement(element) {
   }
 }
 
-function getNetworkConnection() {
-  return (
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection ||
-    null
-  );
-}
-
-function hasConstrainedConnection() {
-  const connection = getNetworkConnection();
-  if (!connection) return false;
-
-  const weakTypes = new Set(["slow-2g", "2g", "3g"]);
-  return Boolean(
-    connection.saveData ||
-      weakTypes.has(connection.effectiveType) ||
-      (connection.downlink && connection.downlink <= 1.5),
-  );
-}
-
 function initLazyMedia() {
   const lazyMedia = Array.from(
     document.querySelectorAll("video[data-src], video[data-poster]"),
@@ -920,15 +899,13 @@ function initShowcaseVideos() {
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   let primaryInView = true;
   let primaryAutoplayEnabled = false;
-  let primaryAutoplayScheduled = false;
 
   const canAutoplayPrimary = () =>
     Boolean(primaryCard) &&
     primaryAutoplayEnabled &&
     primaryInView &&
     !document.hidden &&
-    !motionQuery.matches &&
-    !hasConstrainedConnection();
+    !motionQuery.matches;
 
   const stopCard = (card, reset = false) => {
     const video = card.querySelector(".showcase-video");
@@ -991,8 +968,9 @@ function initShowcaseVideos() {
   cards.forEach((card) => {
     const video = card.querySelector(".showcase-video");
     if (!video) return;
+    const isPrimaryCard = card === primaryCard;
 
-    video.autoplay = false;
+    video.autoplay = isPrimaryCard;
     video.defaultMuted = true;
     video.muted = true;
     video.loop = true;
@@ -1000,9 +978,14 @@ function initShowcaseVideos() {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
-    video.removeAttribute("autoplay");
-    video.preload = "none";
-    video.pause();
+    if (isPrimaryCard) {
+      video.setAttribute("autoplay", "");
+      video.preload = "auto";
+    } else {
+      video.removeAttribute("autoplay");
+      video.preload = "none";
+      video.pause();
+    }
 
     card.addEventListener("mouseenter", () => playCard(card));
     card.addEventListener("focusin", () => playCard(card));
@@ -1068,44 +1051,11 @@ function initShowcaseVideos() {
   });
 
   const enablePrimaryAutoplay = () => {
-    primaryAutoplayScheduled = false;
-    if (hasConstrainedConnection()) return;
     primaryAutoplayEnabled = true;
     syncPrimaryAutoplay();
   };
 
-  const schedulePrimaryAutoplay = () => {
-    if (
-      primaryAutoplayEnabled ||
-      primaryAutoplayScheduled ||
-      hasConstrainedConnection()
-    ) {
-      return;
-    }
-
-    primaryAutoplayScheduled = true;
-    if (typeof window.requestIdleCallback === "function") {
-      window.requestIdleCallback(enablePrimaryAutoplay, { timeout: 1800 });
-    } else {
-      window.setTimeout(enablePrimaryAutoplay, 1200);
-    }
-  };
-
-  schedulePrimaryAutoplay();
-
-  const connection = getNetworkConnection();
-  if (connection && typeof connection.addEventListener === "function") {
-    connection.addEventListener("change", () => {
-      if (hasConstrainedConnection()) {
-        primaryAutoplayEnabled = false;
-        primaryAutoplayScheduled = false;
-        if (primaryCard) stopCard(primaryCard, true);
-        return;
-      }
-
-      schedulePrimaryAutoplay();
-    });
-  }
+  enablePrimaryAutoplay();
 }
 
 function initCitationCopy() {
@@ -1194,7 +1144,7 @@ function initMetricColumnFrames() {
         const frameLayerRect = frameLayer.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const tableRect = table.getBoundingClientRect();
-        const frameInsetX = -6;
+        const frameInsetX = -2;
         const frameOutsetY = 18;
         const pinnedLeft =
           containerRect.left +
