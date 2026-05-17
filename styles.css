@@ -1018,10 +1018,6 @@ main {
   box-shadow: var(--shadow);
 }
 
-.section-image-editing {
-  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
-}
-
 .image-editing-panel {
   position: relative;
   width: min(100%, 980px);
@@ -1036,10 +1032,6 @@ main {
   border-radius: 6px;
   background: #0d0b07;
   box-shadow: var(--shadow);
-}
-
-.section-understanding {
-  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
 }
 
 .understanding-grid {
@@ -1152,10 +1144,6 @@ main {
   letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
-}
-
-.section-video-understanding {
-  background: linear-gradient(180deg, rgba(255, 247, 225, 0.012), transparent 58%);
 }
 
 .video-understanding-grid {
