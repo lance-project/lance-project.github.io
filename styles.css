@@ -404,7 +404,9 @@ main {
   outline: 0;
 }
 
-.nav-more-menu .nav-more-video-link {
+.nav-more-menu .nav-more-video-link,
+.nav-more-menu .nav-more-framework-link,
+.nav-more-menu .nav-more-benchmarks-link {
   display: none;
 }
 
@@ -2280,7 +2282,11 @@ footer a:hover {
     mask-image: none;
   }
 
-  .nav-item-secondary {
+  .nav-item-citation {
+    display: none;
+  }
+
+  .nav-more-menu .nav-more-image-link {
     display: none;
   }
 
@@ -2426,11 +2432,13 @@ footer a:hover {
     gap: 9px;
   }
 
-  .nav-item-videos {
+  .nav-item-framework,
+  .nav-item-benchmarks {
     display: none;
   }
 
-  .nav-more-menu .nav-more-video-link {
+  .nav-more-menu .nav-more-framework-link,
+  .nav-more-menu .nav-more-benchmarks-link {
     display: flex;
   }
 
