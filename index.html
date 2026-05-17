@@ -159,20 +159,6 @@
           <div class="nav-item">
             <a class="nav-link" href="#overview">Overview</a>
           </div>
-          <div class="nav-item">
-            <a class="nav-link" href="#framework">Framework</a>
-          </div>
-          <div class="nav-item">
-            <a class="nav-link" href="#benchmarks">Benchmarks</a>
-            <div class="nav-submenu" aria-label="Benchmark sections">
-              <a href="#benchmarks">Multimodal radar</a>
-              <a href="#geneval">GenEVAL</a>
-              <a href="#dpg-bench">DPG-Bench</a>
-              <a href="#gedit-bench">GEdit-Bench</a>
-              <a href="#vbench">VBench</a>
-              <a href="#mvbench">MVBench</a>
-            </div>
-          </div>
           <div class="nav-item nav-item-videos">
             <a class="nav-link" href="#videos">Videos</a>
             <div class="nav-submenu" aria-label="Video sections">
@@ -189,6 +175,20 @@
               <a href="#images">Text-to-Image</a>
               <a href="#image-editing">Image Editing</a>
               <a href="#image-understanding">Image Understanding</a>
+            </div>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="#framework">Framework</a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="#benchmarks">Benchmarks</a>
+            <div class="nav-submenu" aria-label="Benchmark sections">
+              <a href="#benchmarks">Multimodal radar</a>
+              <a href="#geneval">GenEVAL</a>
+              <a href="#dpg-bench">DPG-Bench</a>
+              <a href="#gedit-bench">GEdit-Bench</a>
+              <a href="#vbench">VBench</a>
+              <a href="#mvbench">MVBench</a>
             </div>
           </div>
           <div class="nav-item nav-item-secondary">
@@ -435,72 +435,6 @@
         </div>
       </div>
     </header>
-
-    <section class="section section-centered" id="framework">
-      <div class="container">
-        <h2 class="section-title">Framework</h2>
-        <p class="section-copy">
-          Lance keeps a shared interleaved sequence for text, image, and video
-          context, then separates semantic understanding and visual generation
-          through dedicated experts.
-        </p>
-        <figure class="figure-panel">
-          <img
-            src="assets/framework/lance-framework-golden-cropped.webp"
-            alt="Lance Framework"
-            class="framework-img"
-            width="3240"
-            height="1500"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption class="media-caption">
-            Lance combines semantic ViT tokens for understanding,
-            clean/noisy VAE latents for generation, generalized 3D causal
-            attention, and MaPE to reduce positional interference among
-            heterogeneous visual tokens.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section
-      class="section section-centered benchmark-section benchmark-overview-section"
-      id="benchmarks"
-    >
-      <div class="container">
-        <h2 class="section-title benchmark-title">
-          Comparison on multimodal benchmarks
-        </h2>
-        <p class="section-copy benchmark-overview-copy">
-          <span>
-            Radar charts compare Lance with representative unified and
-            task-specialized baselines.
-          </span>
-          <span>
-            Detailed tables:
-            <a class="inline-link" href="#geneval">GenEVAL</a>,
-            <a class="inline-link" href="#dpg-bench">DPG-Bench</a>,
-            <a class="inline-link" href="#gedit-bench">GEdit-Bench</a>,
-            <a class="inline-link" href="#vbench">VBench</a>, and
-            <a class="inline-link" href="#mvbench">MVBench</a>.
-          </span>
-        </p>
-        <figure class="benchmark-radar">
-          <div class="benchmark-radar-frame">
-            <img
-              class="benchmark-radar-img"
-              src="assets/benchmarks/combined-radar-opt.webp"
-              alt="Radar chart comparing Lance with image generation, editing, and video generation baselines"
-              width="5322"
-              height="2375"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </figure>
-      </div>
-    </section>
 
     <section class="section section-video section-centered" id="videos">
       <div class="container">
@@ -1529,6 +1463,72 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-centered" id="framework">
+      <div class="container">
+        <h2 class="section-title">Framework</h2>
+        <p class="section-copy">
+          Lance keeps a shared interleaved sequence for text, image, and video
+          context, then separates semantic understanding and visual generation
+          through dedicated experts.
+        </p>
+        <figure class="figure-panel">
+          <img
+            src="assets/framework/lance-framework-golden-cropped.webp"
+            alt="Lance Framework"
+            class="framework-img"
+            width="3240"
+            height="1500"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="media-caption">
+            Lance combines semantic ViT tokens for understanding,
+            clean/noisy VAE latents for generation, generalized 3D causal
+            attention, and MaPE to reduce positional interference among
+            heterogeneous visual tokens.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section
+      class="section section-centered benchmark-section benchmark-overview-section"
+      id="benchmarks"
+    >
+      <div class="container">
+        <h2 class="section-title benchmark-title">
+          Comparison on multimodal benchmarks
+        </h2>
+        <p class="section-copy benchmark-overview-copy">
+          <span>
+            Radar charts compare Lance with representative unified and
+            task-specialized baselines.
+          </span>
+          <span>
+            Detailed tables:
+            <a class="inline-link" href="#geneval">GenEVAL</a>,
+            <a class="inline-link" href="#dpg-bench">DPG-Bench</a>,
+            <a class="inline-link" href="#gedit-bench">GEdit-Bench</a>,
+            <a class="inline-link" href="#vbench">VBench</a>, and
+            <a class="inline-link" href="#mvbench">MVBench</a>.
+          </span>
+        </p>
+        <figure class="benchmark-radar">
+          <div class="benchmark-radar-frame">
+            <img
+              class="benchmark-radar-img"
+              src="assets/benchmarks/combined-radar-opt.webp"
+              alt="Radar chart comparing Lance with image generation, editing, and video generation baselines"
+              width="5322"
+              height="2375"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
       </div>
     </section>
 
