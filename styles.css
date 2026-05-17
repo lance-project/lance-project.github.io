@@ -47,6 +47,23 @@ a {
   color: inherit;
 }
 
+.inline-link {
+  color: #f5d58a;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 181, 102, 0.46);
+  text-underline-offset: 3px;
+  transition:
+    color 0.18s ease,
+    text-decoration-color 0.18s ease;
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: #fff7e1;
+  text-decoration-color: rgba(255, 247, 225, 0.82);
+}
+
 img,
 video {
   display: block;
@@ -269,6 +286,130 @@ main {
 .nav-submenu a:hover::before,
 .nav-submenu a:focus-visible::before {
   background: rgba(216, 181, 102, 0.62);
+}
+
+.nav-more {
+  position: relative;
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: var(--nav-height);
+}
+
+.nav-more-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  list-style: none;
+  transition: color 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.nav-more-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav-more-toggle::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 181, 102, 0.2),
+    rgba(216, 181, 102, 0.86),
+    rgba(216, 181, 102, 0.2)
+  );
+  opacity: 0;
+  transform: scaleX(0.42);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-more[open] .nav-more-toggle,
+.nav-more-toggle:focus-visible {
+  color: #fff7e1;
+  outline: 0;
+}
+
+.nav-more[open] .nav-more-toggle::after,
+.nav-more-toggle:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nav-more-menu {
+  position: absolute;
+  top: calc(100% - 9px);
+  right: 0;
+  z-index: 30;
+  display: grid;
+  gap: 1px;
+  min-width: 132px;
+  padding: 5px;
+  border: 1px solid rgba(216, 181, 102, 0.1);
+  border-radius: 6px;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 225, 0.035), transparent),
+    rgba(10, 9, 7, 0.86);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 247, 225, 0.04);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(5px);
+  transition:
+    opacity 0.16s ease,
+    transform 0.16s ease,
+    visibility 0.16s ease;
+  visibility: hidden;
+}
+
+.nav-more[open] .nav-more-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.nav-more-menu a {
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-decoration: none;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease;
+}
+
+.nav-more-menu a:hover,
+.nav-more-menu a:focus-visible {
+  background: rgba(216, 181, 102, 0.07);
+  color: #fff7e1;
+  outline: 0;
+}
+
+.nav-more-menu .nav-more-video-link {
+  display: none;
 }
 
 .hero {
@@ -700,6 +841,15 @@ main {
 
 .section-centered .section-copy {
   max-width: 86ch;
+}
+
+.section-centered .benchmark-overview-copy {
+  max-width: 112ch;
+}
+
+.benchmark-overview-copy span {
+  display: block;
+  white-space: nowrap;
 }
 
 #framework .section-copy {
@@ -1323,12 +1473,80 @@ main {
   text-align: center;
 }
 
+.benchmark-note {
+  max-width: 78ch;
+  margin: 10px auto 0;
+  color: var(--text-dim);
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.metric-frame-layer + .benchmark-note {
+  margin-top: 34px;
+}
+
+.benchmark-abbrev-note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px 18px;
+  max-width: min(100%, 980px);
+  text-align: left;
+}
+
+.benchmark-abbrev-item {
+  display: inline-flex;
+  align-items: baseline;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0;
+  column-gap: 5px;
+}
+
+.benchmark-abbrev-key {
+  flex: 0 0 auto;
+  color: #f0ce7a;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.benchmark-abbrev-key::after {
+  content: "=";
+  margin-left: 5px;
+  color: rgba(255, 247, 225, 0.34);
+  font-weight: 600;
+}
+
+.benchmark-abbrev-value {
+  min-width: 0;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  line-height: 1.28;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .benchmark-abbrev-item {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 .benchmark-overview-section {
   padding-bottom: 48px;
 }
 
 .benchmark-overview-section + .benchmark-section {
   padding-top: 56px;
+}
+
+@media (max-width: 768px) {
+  .metric-column-frame {
+    display: none;
+  }
 }
 
 .benchmark-radar {
@@ -2064,18 +2282,21 @@ footer a:hover {
   }
 
   .nav-links {
+    flex: 0 1 auto;
     min-width: 0;
     justify-content: flex-start;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-right: 24px;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      #000 0%,
-      #000 86%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(90deg, #000 0%, #000 86%, transparent 100%);
+    overflow: visible;
+    padding-right: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .nav-item-secondary {
+    display: none;
+  }
+
+  .nav-more {
+    display: flex;
   }
 
   .nav-submenu {
@@ -2120,6 +2341,10 @@ footer a:hover {
 
   .section-title {
     font-size: 32px;
+  }
+
+  .benchmark-overview-copy span {
+    white-space: normal;
   }
 
   .video-grid {
@@ -2191,7 +2416,8 @@ footer a:hover {
 
   .nav-inner {
     min-height: var(--nav-height);
-    overflow: hidden;
+    gap: 10px;
+    overflow: visible;
   }
 
   .nav-brand {
@@ -2205,6 +2431,27 @@ footer a:hover {
   .nav-link {
     padding: 7px 2px 10px;
     font-size: 12px;
+  }
+
+  .nav-links {
+    gap: 9px;
+  }
+
+  .nav-item-videos {
+    display: none;
+  }
+
+  .nav-more-menu .nav-more-video-link {
+    display: flex;
+  }
+
+  .nav-more-toggle {
+    padding: 7px 0 10px;
+    font-size: 12px;
+  }
+
+  .nav-more-menu {
+    top: calc(100% - 5px);
   }
 
   .hero {

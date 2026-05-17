@@ -33,24 +33,6 @@
             <a class="nav-link" href="#overview">Overview</a>
           </div>
           <div class="nav-item">
-            <a class="nav-link" href="#videos">Videos</a>
-            <div class="nav-submenu" aria-label="Video sections">
-              <a href="#videos">Text-to-Video</a>
-              <a href="#video-editing">Video Editing</a>
-              <a href="#multi-round-editing">Multi-turn Editing</a>
-              <a href="#intelligent-video">Intelligent Video</a>
-              <a href="#video-understanding">Video Understanding</a>
-            </div>
-          </div>
-          <div class="nav-item">
-            <a class="nav-link" href="#images">Images</a>
-            <div class="nav-submenu" aria-label="Image sections">
-              <a href="#images">Text-to-Image</a>
-              <a href="#image-editing">Image Editing</a>
-              <a href="#image-understanding">Image Understanding</a>
-            </div>
-          </div>
-          <div class="nav-item">
             <a class="nav-link" href="#framework">Framework</a>
           </div>
           <div class="nav-item">
@@ -64,10 +46,36 @@
               <a href="#mvbench">MVBench</a>
             </div>
           </div>
-          <div class="nav-item">
+          <div class="nav-item nav-item-videos">
+            <a class="nav-link" href="#videos">Videos</a>
+            <div class="nav-submenu" aria-label="Video sections">
+              <a href="#videos">Text-to-Video</a>
+              <a href="#video-editing">Video Editing</a>
+              <a href="#multi-round-editing">Multi-turn Editing</a>
+              <a href="#intelligent-video">Intelligent Video</a>
+              <a href="#video-understanding">Video Understanding</a>
+            </div>
+          </div>
+          <div class="nav-item nav-item-secondary">
+            <a class="nav-link" href="#images">Images</a>
+            <div class="nav-submenu" aria-label="Image sections">
+              <a href="#images">Text-to-Image</a>
+              <a href="#image-editing">Image Editing</a>
+              <a href="#image-understanding">Image Understanding</a>
+            </div>
+          </div>
+          <div class="nav-item nav-item-secondary">
             <a class="nav-link" href="#citation">Citation</a>
           </div>
         </div>
+        <details class="nav-more">
+          <summary class="nav-more-toggle">More</summary>
+          <div class="nav-more-menu" aria-label="More sections">
+            <a class="nav-more-video-link" href="#videos">Videos</a>
+            <a href="#images">Images</a>
+            <a href="#citation">Citation</a>
+          </div>
+        </details>
       </div>
     </nav>
 
@@ -232,13 +240,12 @@
             />
             <video
               class="showcase-video"
-              src="assets/text-to-video/videos/t2v-banner.mp4"
-              poster="assets/text-to-video/posters/t2v-fg-sp-0000.jpg"
-              autoplay
+              data-src="assets/text-to-video/videos/t2v-banner.mp4"
+              data-poster="assets/text-to-video/posters/t2v-fg-sp-0000.jpg"
               muted
               loop
               playsinline
-              preload="auto"
+              preload="none"
               aria-hidden="true"
             ></video>
             <div class="showcase-caption">
@@ -259,8 +266,8 @@
             />
             <video
               class="showcase-video"
-              src="assets/video-editing/videos/edit-03.mp4"
-              poster="assets/video-editing/posters/edit-03-opt.webp"
+              data-src="assets/video-editing/videos/edit-03.mp4"
+              data-poster="assets/video-editing/posters/edit-03-opt.webp"
               muted
               loop
               playsinline
@@ -285,8 +292,8 @@
             />
             <video
               class="showcase-video"
-              src="assets/intelligent-video/videos/maze-6x6-1.mp4"
-              poster="assets/intelligent-video/posters/maze-6x6-1-opt.webp"
+              data-src="assets/intelligent-video/videos/maze-6x6-1.mp4"
+              data-poster="assets/intelligent-video/posters/maze-6x6-1-opt.webp"
               muted
               loop
               playsinline
@@ -301,6 +308,72 @@
       </div>
     </header>
 
+    <section class="section section-centered" id="framework">
+      <div class="container">
+        <h2 class="section-title">Framework</h2>
+        <p class="section-copy">
+          Lance keeps a shared interleaved sequence for text, image, and video
+          context, then separates semantic understanding and visual generation
+          through dedicated experts.
+        </p>
+        <figure class="figure-panel">
+          <img
+            src="assets/framework/lance-framework-golden-cropped.webp"
+            alt="Lance Framework"
+            class="framework-img"
+            width="3240"
+            height="1500"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption class="media-caption">
+            Lance combines semantic ViT tokens for understanding,
+            clean/noisy VAE latents for generation, generalized 3D causal
+            attention, and MaPE to reduce positional interference among
+            heterogeneous visual tokens.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section
+      class="section section-centered benchmark-section benchmark-overview-section"
+      id="benchmarks"
+    >
+      <div class="container">
+        <h2 class="section-title benchmark-title">
+          Comparison on multimodal benchmarks
+        </h2>
+        <p class="section-copy benchmark-overview-copy">
+          <span>
+            Radar charts compare Lance with representative unified and
+            task-specialized baselines.
+          </span>
+          <span>
+            Detailed tables:
+            <a class="inline-link" href="#geneval">GenEVAL</a>,
+            <a class="inline-link" href="#dpg-bench">DPG-Bench</a>,
+            <a class="inline-link" href="#gedit-bench">GEdit-Bench</a>,
+            <a class="inline-link" href="#vbench">VBench</a>, and
+            <a class="inline-link" href="#mvbench">MVBench</a>.
+          </span>
+        </p>
+        <figure class="benchmark-radar">
+          <div class="benchmark-radar-frame">
+            <img
+              class="benchmark-radar-img"
+              src="assets/benchmarks/combined-radar-opt.webp"
+              alt="Radar chart comparing Lance with image generation, editing, and video generation baselines"
+              width="5322"
+              height="2375"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+      </div>
+    </section>
+
     <section class="section section-video section-centered" id="videos">
       <div class="container">
         <h2 class="section-title">Text-to-Video</h2>
@@ -312,8 +385,8 @@
           <div class="video-grid video-grid-portrait video-grid-t2v">
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0000-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0000.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0000-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0000.jpg"
                 loop
                 muted
                 playsinline
@@ -331,8 +404,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0009-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0009.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0009-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0009.jpg"
                 loop
                 muted
                 playsinline
@@ -351,8 +424,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0014-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0014.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0014-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0014.jpg"
                 loop
                 muted
                 playsinline
@@ -370,8 +443,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-sp-fg-0005-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-sp-fg-0005-opt.webp"
+                data-src="assets/text-to-video/videos/t2v-sp-fg-0005-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-sp-fg-0005-opt.webp"
                 loop
                 muted
                 playsinline
@@ -389,8 +462,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-sp-fg-0024.mp4"
-                poster="assets/text-to-video/posters/t2v-sp-fg-0024-opt.webp"
+                data-src="assets/text-to-video/videos/t2v-sp-fg-0024.mp4"
+                data-poster="assets/text-to-video/posters/t2v-sp-fg-0024-opt.webp"
                 loop
                 muted
                 playsinline
@@ -417,8 +490,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0036-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0036.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0036-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0036.jpg"
                 loop
                 muted
                 playsinline
@@ -443,8 +516,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0040-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0040.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0040-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0040.jpg"
                 loop
                 muted
                 playsinline
@@ -468,8 +541,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0041-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0041.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0041-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0041.jpg"
                 loop
                 muted
                 playsinline
@@ -491,8 +564,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/text-to-video/videos/t2v-fg-sp-0042-opt.mp4"
-                poster="assets/text-to-video/posters/t2v-fg-sp-0042.jpg"
+                data-src="assets/text-to-video/videos/t2v-fg-sp-0042-opt.mp4"
+                data-poster="assets/text-to-video/posters/t2v-fg-sp-0042.jpg"
                 loop
                 muted
                 playsinline
@@ -525,8 +598,8 @@
           <div class="video-grid video-grid-edit video-grid-portrait">
             <article class="video-item portrait" data-preview-title="Background transformation">
               <video
-                src="assets/video-editing/videos/edit-00.mp4"
-                poster="assets/video-editing/posters/edit-00-opt.webp"
+                data-src="assets/video-editing/videos/edit-00.mp4"
+                data-poster="assets/video-editing/posters/edit-00-opt.webp"
                 loop
                 muted
                 playsinline
@@ -541,8 +614,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Object addition">
               <video
-                src="assets/video-editing/videos/edit-01.mp4"
-                poster="assets/video-editing/posters/edit-01-opt.webp"
+                data-src="assets/video-editing/videos/edit-01.mp4"
+                data-poster="assets/video-editing/posters/edit-01-opt.webp"
                 loop
                 muted
                 playsinline
@@ -557,8 +630,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Character replacement">
               <video
-                src="assets/video-editing/videos/edit-05.mp4"
-                poster="assets/video-editing/posters/edit-05.jpg"
+                data-src="assets/video-editing/videos/edit-05.mp4"
+                data-poster="assets/video-editing/posters/edit-05.jpg"
                 loop
                 muted
                 playsinline
@@ -573,8 +646,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Subject replacement">
               <video
-                src="assets/video-editing/videos/edit-03.mp4"
-                poster="assets/video-editing/posters/edit-03-opt.webp"
+                data-src="assets/video-editing/videos/edit-03.mp4"
+                data-poster="assets/video-editing/posters/edit-03-opt.webp"
                 loop
                 muted
                 playsinline
@@ -589,8 +662,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Stylized scene">
               <video
-                src="assets/video-editing/videos/edit-04-opt.mp4"
-                poster="assets/video-editing/posters/edit-04-opt.webp"
+                data-src="assets/video-editing/videos/edit-04-opt.mp4"
+                data-poster="assets/video-editing/posters/edit-04-opt.webp"
                 loop
                 muted
                 playsinline
@@ -607,8 +680,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Compositional winter edit">
               <video
-                src="assets/video-editing/videos/edit-08.mp4"
-                poster="assets/video-editing/posters/edit-08-opt.webp"
+                data-src="assets/video-editing/videos/edit-08.mp4"
+                data-poster="assets/video-editing/posters/edit-08-opt.webp"
                 loop
                 muted
                 playsinline
@@ -625,8 +698,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Action and expression">
               <video
-                src="assets/video-editing/videos/edit-06.mp4"
-                poster="assets/video-editing/posters/edit-06-opt.webp"
+                data-src="assets/video-editing/videos/edit-06.mp4"
+                data-poster="assets/video-editing/posters/edit-06-opt.webp"
                 loop
                 muted
                 playsinline
@@ -645,8 +718,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Compositional accessory edit">
               <video
-                src="assets/video-editing/videos/edit-07.mp4"
-                poster="assets/video-editing/posters/edit-07.jpg"
+                data-src="assets/video-editing/videos/edit-07.mp4"
+                data-poster="assets/video-editing/posters/edit-07.jpg"
                 loop
                 muted
                 playsinline
@@ -663,8 +736,8 @@
             </article>
             <article class="video-item portrait" data-preview-title="Object removal">
               <video
-                src="assets/video-editing/videos/edit-02.mp4"
-                poster="assets/video-editing/posters/edit-02.jpg"
+                data-src="assets/video-editing/videos/edit-02.mp4"
+                data-poster="assets/video-editing/posters/edit-02.jpg"
                 loop
                 muted
                 playsinline
@@ -697,8 +770,8 @@
           >
             <article class="video-item portrait">
               <video
-                src="assets/multi-turn-editing/videos/multi-00.mp4"
-                poster="assets/multi-turn-editing/posters/multi-00.jpg"
+                data-src="assets/multi-turn-editing/videos/multi-00.mp4"
+                data-poster="assets/multi-turn-editing/posters/multi-00.jpg"
                 loop
                 muted
                 playsinline
@@ -709,8 +782,8 @@
             <span class="flow-arrow flow-arrow-linear" aria-hidden="true"></span>
             <article class="video-item portrait" data-preview-title="Hair replacement">
               <video
-                src="assets/multi-turn-editing/videos/multi-01.mp4"
-                poster="assets/multi-turn-editing/posters/multi-01.jpg"
+                data-src="assets/multi-turn-editing/videos/multi-01.mp4"
+                data-poster="assets/multi-turn-editing/posters/multi-01.jpg"
                 loop
                 muted
                 playsinline
@@ -726,8 +799,8 @@
             <span class="flow-arrow flow-arrow-linear" aria-hidden="true"></span>
             <article class="video-item portrait" data-preview-title="Floral headband">
               <video
-                src="assets/multi-turn-editing/videos/multi-02.mp4"
-                poster="assets/multi-turn-editing/posters/multi-02.jpg"
+                data-src="assets/multi-turn-editing/videos/multi-02.mp4"
+                data-poster="assets/multi-turn-editing/posters/multi-02.jpg"
                 loop
                 muted
                 playsinline
@@ -743,8 +816,8 @@
             <span class="flow-arrow flow-arrow-linear" aria-hidden="true"></span>
             <article class="video-item portrait" data-preview-title="Castle background">
               <video
-                src="assets/multi-turn-editing/videos/multi-03.mp4"
-                poster="assets/multi-turn-editing/posters/multi-03.jpg"
+                data-src="assets/multi-turn-editing/videos/multi-03.mp4"
+                data-poster="assets/multi-turn-editing/posters/multi-03.jpg"
                 loop
                 muted
                 playsinline
@@ -760,8 +833,8 @@
             <span class="flow-arrow flow-arrow-linear" aria-hidden="true"></span>
             <article class="video-item portrait" data-preview-title="Hand wave">
               <video
-                src="assets/multi-turn-editing/videos/multi-04.mp4"
-                poster="assets/multi-turn-editing/posters/multi-04.jpg"
+                data-src="assets/multi-turn-editing/videos/multi-04.mp4"
+                data-poster="assets/multi-turn-editing/posters/multi-04.jpg"
                 loop
                 muted
                 playsinline
@@ -794,8 +867,8 @@
           <div class="video-grid video-grid-intelligent video-grid-portrait">
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-4x4-5.mp4"
-                poster="assets/intelligent-video/posters/maze-4x4-5-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-4x4-5.mp4"
+                data-poster="assets/intelligent-video/posters/maze-4x4-5-opt.webp"
                 loop
                 muted
                 playsinline
@@ -814,8 +887,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-5x5-1.mp4"
-                poster="assets/intelligent-video/posters/maze-5x5-1-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-5x5-1.mp4"
+                data-poster="assets/intelligent-video/posters/maze-5x5-1-opt.webp"
                 loop
                 muted
                 playsinline
@@ -834,8 +907,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-6x6-1.mp4"
-                poster="assets/intelligent-video/posters/maze-6x6-1-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-6x6-1.mp4"
+                data-poster="assets/intelligent-video/posters/maze-6x6-1-opt.webp"
                 loop
                 muted
                 playsinline
@@ -854,8 +927,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-4x4-7.mp4"
-                poster="assets/intelligent-video/posters/maze-4x4-7-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-4x4-7.mp4"
+                data-poster="assets/intelligent-video/posters/maze-4x4-7-opt.webp"
                 loop
                 muted
                 playsinline
@@ -874,8 +947,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-5x5-0.mp4"
-                poster="assets/intelligent-video/posters/maze-5x5-0-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-5x5-0.mp4"
+                data-poster="assets/intelligent-video/posters/maze-5x5-0-opt.webp"
                 loop
                 muted
                 playsinline
@@ -894,8 +967,8 @@
             </article>
             <article class="video-item portrait">
               <video
-                src="assets/intelligent-video/videos/maze-6x6-2.mp4"
-                poster="assets/intelligent-video/posters/maze-6x6-2-opt.webp"
+                data-src="assets/intelligent-video/videos/maze-6x6-2.mp4"
+                data-poster="assets/intelligent-video/posters/maze-6x6-2-opt.webp"
                 loop
                 muted
                 playsinline
@@ -932,8 +1005,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/vqa-001-opt.mp4"
-                poster="assets/video-understanding/posters/vqa-001.jpg"
+                data-src="assets/video-understanding/videos/vqa-001-opt.mp4"
+                data-poster="assets/video-understanding/posters/vqa-001.jpg"
                 loop
                 muted
                 playsinline
@@ -951,7 +1024,7 @@
                 (B) 2<br />
                 (C) 4
               </p>
-              <span class="video-understanding-field">Answer</span>
+              <span class="video-understanding-field">Response</span>
               <p class="video-understanding-answer">(A) 3</p>
             </div>
           </article>
@@ -959,8 +1032,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/vqa-002-opt.mp4"
-                poster="assets/video-understanding/posters/vqa-002-opt.webp"
+                data-src="assets/video-understanding/videos/vqa-002-opt.mp4"
+                data-poster="assets/video-understanding/posters/vqa-002-opt.webp"
                 loop
                 muted
                 playsinline
@@ -978,7 +1051,7 @@
                 (B) 3<br />
                 (C) 4
               </p>
-              <span class="video-understanding-field">Answer</span>
+              <span class="video-understanding-field">Response</span>
               <p class="video-understanding-answer">(A) 2</p>
             </div>
           </article>
@@ -986,8 +1059,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/vqa-006-opt.mp4"
-                poster="assets/video-understanding/posters/vqa-006.jpg"
+                data-src="assets/video-understanding/videos/vqa-006-opt.mp4"
+                data-poster="assets/video-understanding/posters/vqa-006.jpg"
                 loop
                 muted
                 playsinline
@@ -1006,7 +1079,7 @@
                 (C) Up and to the right.<br />
                 (D) The object is stationary.
               </p>
-              <span class="video-understanding-field">Answer</span>
+              <span class="video-understanding-field">Response</span>
               <p class="video-understanding-answer">
                 (A) Down and to the right.
               </p>
@@ -1016,8 +1089,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/vqa-009.mp4"
-                poster="assets/video-understanding/posters/vqa-009.jpg"
+                data-src="assets/video-understanding/videos/vqa-009.mp4"
+                data-poster="assets/video-understanding/posters/vqa-009.jpg"
                 loop
                 muted
                 playsinline
@@ -1035,7 +1108,7 @@
                 (C) Chocolate transforms into different objects.<br />
                 (D) Visible means of propulsion enables flight.
               </p>
-              <span class="video-understanding-field">Answer</span>
+              <span class="video-understanding-field">Response</span>
               <p class="video-understanding-answer">
                 (B) Man grabs an object through a phone screen.
               </p>
@@ -1045,8 +1118,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/short-caption-001-opt.mp4"
-                poster="assets/video-understanding/posters/short-caption-001.jpg"
+                data-src="assets/video-understanding/videos/short-caption-001-opt.mp4"
+                data-poster="assets/video-understanding/posters/short-caption-001.jpg"
                 loop
                 muted
                 playsinline
@@ -1062,7 +1135,7 @@
               </p>
               <span
                 class="video-understanding-field video-understanding-caption-answer-label"
-                >Answer</span
+                >Response</span
               >
               <p class="video-understanding-answer">
                 Add tomato puree and mix it well with chicken pieces.
@@ -1073,8 +1146,8 @@
           <article class="video-understanding-card">
             <div class="video-understanding-media video-item">
               <video
-                src="assets/video-understanding/videos/long-caption-003.mp4"
-                poster="assets/video-understanding/posters/long-caption-003.jpg"
+                data-src="assets/video-understanding/videos/long-caption-003.mp4"
+                data-poster="assets/video-understanding/posters/long-caption-003.jpg"
                 loop
                 muted
                 playsinline
@@ -1090,7 +1163,7 @@
               </p>
               <span
                 class="video-understanding-field video-understanding-caption-answer-label"
-                >Answer</span
+                >Response</span
               >
               <p class="video-understanding-answer">
                 In a sunlit meadow, a small tortoiseshell butterfly rests on a
@@ -1185,7 +1258,7 @@
                 segments?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 Yes, the largest segment in the pie chart is the blue one,
                 which is the most populous segment.
               </p>
@@ -1209,7 +1282,7 @@
                 What percentage of respondents want better border security?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 29%
               </p>
             </div>
@@ -1232,7 +1305,7 @@
                 What is the license plate number of the car?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 The license plate number of the car is BX62 BFY.
               </p>
             </div>
@@ -1256,7 +1329,7 @@
                 spent on promotional meetings and events during 1998?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 According to the data from the proprietary market research, the
                 total amount spent on the promotional meetings and events
                 during 1998 was approximately $1.3 billion.
@@ -1281,7 +1354,7 @@
                 What is the appearance of the Colosseum in Rome, Italy?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 The Colosseum in Rome, Italy is a magnificent ancient
                 amphitheater made of stone and concrete. It is characterized by
                 its large, arched openings and its semi-circular shape. The
@@ -1312,7 +1385,7 @@
                 How does a total solar eclipse look like from Earth?
               </p>
               <p class="understanding-answer">
-                <span>Answer</span>
+                <span>Response</span>
                 A total solar eclipse looks like a dark circle with a bright,
                 white outer edge. This is a result of the Earth's rotation and
                 the Earth's shadow, which partially obscures the sun's light.
@@ -1328,63 +1401,6 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-centered" id="framework">
-      <div class="container">
-        <h2 class="section-title">Framework</h2>
-        <p class="section-copy">
-          Lance keeps a shared interleaved sequence for text, image, and video
-          context, then separates semantic understanding and visual synthesis
-          through dedicated expert pathways.
-        </p>
-        <figure class="figure-panel">
-          <img
-            src="assets/framework/lance-framework-v2.webp"
-            alt="Lance Framework"
-            class="framework-img"
-            width="2400"
-            height="1068"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption class="media-caption">
-            The framework combines semantic ViT tokens for understanding,
-            clean/noisy VAE latents for generation, generalized 3D causal
-            attention, and MaPE to reduce positional interference among
-            heterogeneous visual tokens.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section
-      class="section section-centered benchmark-section benchmark-overview-section"
-      id="benchmarks"
-    >
-      <div class="container">
-        <h2 class="section-title benchmark-title">
-          Comparison on multimodal benchmarks
-        </h2>
-        <p class="section-copy">
-          Radar charts compare Lance against BAGEL, UniWorld-V1, Wan2.1-T2V,
-          Hunyuan Video, Open-Sora-2.0, Gen-3, and other baselines across
-          image, editing, and video benchmarks.
-        </p>
-        <figure class="benchmark-radar">
-          <div class="benchmark-radar-frame">
-            <img
-              class="benchmark-radar-img"
-              src="assets/benchmarks/combined-radar-opt.webp"
-              alt="Radar chart comparing Lance with image generation, editing, and video generation baselines"
-              width="5322"
-              height="2375"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </figure>
       </div>
     </section>
 
@@ -1409,7 +1425,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Overall</th>
+                <th scope="col">Overall&#8593;</th>
                 <th scope="col">Single Obj.</th>
                 <th scope="col">Two Obj.</th>
                 <th scope="col">Counting</th>
@@ -1550,6 +1566,10 @@
             </table>
           </div>
         </div>
+        <p class="benchmark-note">
+          &#8224; indicates methods that use LLM rewriters for prompt rewriting
+          before generation.
+        </p>
       </div>
     </section>
 
@@ -1574,7 +1594,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Overall</th>
+                <th scope="col">Overall&#8593;</th>
                 <th scope="col">Global</th>
                 <th scope="col">Entity</th>
                 <th scope="col">Attribute</th>
@@ -1803,6 +1823,10 @@
             </table>
           </div>
         </div>
+        <p class="benchmark-note">
+          &#8224; indicates methods that use LLM rewriters for prompt rewriting
+          before generation.
+        </p>
       </div>
     </section>
 
@@ -1827,7 +1851,7 @@
               <tr>
                 <th scope="col">Method</th>
                 <th scope="col"># Params.</th>
-                <th scope="col">Avg/G-O</th>
+                <th scope="col">Avg/G-O&#8593;</th>
                 <th scope="col">BC</th>
                 <th scope="col">CA</th>
                 <th scope="col">MM</th>
@@ -1995,6 +2019,55 @@
             </tbody>
             </table>
           </div>
+        </div>
+        <div
+          class="benchmark-note benchmark-abbrev-note"
+          aria-label="GEdit-Bench abbreviation definitions"
+        >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">BC</span
+            ><span class="benchmark-abbrev-value">background_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CA</span
+            ><span class="benchmark-abbrev-value">color_alter</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MM</span
+            ><span class="benchmark-abbrev-value">material_alter</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MC</span
+            ><span class="benchmark-abbrev-value">motion_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">PB</span
+            ><span class="benchmark-abbrev-value">ps_human</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ST</span
+            ><span class="benchmark-abbrev-value">style_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SA</span
+            ><span class="benchmark-abbrev-value">subject-add</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SR</span
+            ><span class="benchmark-abbrev-value">subject-remove</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SRp</span
+            ><span class="benchmark-abbrev-value">subject-replace</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">TM</span
+            ><span class="benchmark-abbrev-value">text_change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">TT</span
+            ><span class="benchmark-abbrev-value">tone_transfer</span></span
+          >
         </div>
       </div>
     </section>
@@ -2930,6 +3003,89 @@
             </tbody>
             </table>
           </div>
+        </div>
+        <div
+          class="benchmark-note benchmark-abbrev-note"
+          aria-label="MVBench abbreviation definitions"
+        >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AS</span
+            ><span class="benchmark-abbrev-value">Action Sequence</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AP</span
+            ><span class="benchmark-abbrev-value">Action Prediction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AA</span
+            ><span class="benchmark-abbrev-value">Action Antonym</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">FA</span
+            ><span class="benchmark-abbrev-value">Fine-grained Action</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">UA</span
+            ><span class="benchmark-abbrev-value">Unexpected Action</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OE</span
+            ><span class="benchmark-abbrev-value">Object Existence</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OI</span
+            ><span class="benchmark-abbrev-value">Object Interaction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">OS</span
+            ><span class="benchmark-abbrev-value">Object Shuffle</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MD</span
+            ><span class="benchmark-abbrev-value">Moving Direction</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AL</span
+            ><span class="benchmark-abbrev-value">Action Localization</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ST</span
+            ><span class="benchmark-abbrev-value">Scene Transition</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">AC</span
+            ><span class="benchmark-abbrev-value">Action Count</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MC</span
+            ><span class="benchmark-abbrev-value">Moving Count</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">MA</span
+            ><span class="benchmark-abbrev-value">Moving Attribute</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">SC</span
+            ><span class="benchmark-abbrev-value">State Change</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CO</span
+            ><span class="benchmark-abbrev-value">Character Order</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">EN</span
+            ><span class="benchmark-abbrev-value">Episodic Reasoning</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">ER</span
+            ><span class="benchmark-abbrev-value">Egocentric Navigation</span></span
+          >
+          <span class="benchmark-abbrev-item"
+            ><span class="benchmark-abbrev-key">CI</span
+            ><span class="benchmark-abbrev-value"
+              >Counterfactual Inference</span
+            ></span
+          >
         </div>
       </div>
     </section>
