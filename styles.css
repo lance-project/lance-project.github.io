@@ -420,6 +420,7 @@ main {
 
 .link-btn {
   display: inline-flex;
+  position: relative;
   align-items: center;
   gap: 10px;
   min-height: 38px;
@@ -434,7 +435,9 @@ main {
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
+    box-shadow 0.2s ease,
     color 0.2s ease,
+    text-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -480,19 +483,34 @@ main {
 }
 
 .link-btn-muted {
-  border-color: rgba(216, 181, 102, 0.16);
-  background: rgba(216, 181, 102, 0.055);
-  color: #b7ab91;
+  border-color: rgba(242, 208, 128, 0.5);
+  background:
+    linear-gradient(180deg, rgba(255, 232, 169, 0.16), rgba(216, 181, 102, 0.07)),
+    rgba(23, 20, 13, 0.86);
+  box-shadow:
+    0 0 0 1px rgba(216, 181, 102, 0.08),
+    0 14px 34px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 244, 212, 0.14);
+  color: #f2dfad;
   opacity: 1;
+  text-shadow: 0 0 18px rgba(216, 181, 102, 0.28);
 }
 
 .link-btn-muted:hover,
 .link-btn-muted:focus-visible {
-  border-color: rgba(216, 181, 102, 0.34);
-  background: rgba(216, 181, 102, 0.1);
-  color: #fff4d7;
+  border-color: rgba(255, 227, 160, 0.86);
+  background:
+    linear-gradient(180deg, rgba(255, 232, 169, 0.26), rgba(216, 181, 102, 0.12)),
+    rgba(32, 27, 16, 0.96);
+  box-shadow:
+    0 0 0 1px rgba(255, 227, 160, 0.14),
+    0 18px 42px rgba(0, 0, 0, 0.34),
+    0 0 28px rgba(216, 181, 102, 0.18),
+    inset 0 1px 0 rgba(255, 244, 212, 0.2);
+  color: #fff4d2;
   outline: 0;
-  transform: none;
+  text-shadow: 0 0 22px rgba(255, 227, 160, 0.34);
+  transform: translateY(-1px);
 }
 
 .hero-showcase {
@@ -1789,7 +1807,23 @@ main {
 }
 
 .video-lightbox.has-qa-details {
-  --lightbox-caption-space: clamp(220px, 34dvh, 360px);
+  --lightbox-caption-space: clamp(180px, 22dvh, 260px);
+  width: min(
+    1440px,
+    calc(100vw - 48px),
+    calc((100dvh - var(--lightbox-caption-space) - 48px) * var(--media-aspect))
+  );
+}
+
+.video-lightbox.is-image-mode.has-qa-details {
+  --lightbox-caption-space: clamp(260px, 32dvh, 360px);
+}
+
+.video-lightbox.has-qa-details .video-lightbox-media {
+  width: min(
+    100%,
+    calc((100dvh - var(--lightbox-caption-space) - 48px) * var(--media-aspect))
+  );
 }
 
 .video-lightbox::backdrop {
@@ -2347,6 +2381,17 @@ footer a:hover {
     max-height: calc(100dvh - 24px);
   }
 
+  .video-lightbox.has-qa-details {
+    width: calc(100vw - 24px);
+  }
+
+  .video-lightbox.has-qa-details .video-lightbox-media {
+    width: min(
+      100%,
+      calc((100dvh - var(--lightbox-caption-space) - 24px) * var(--media-aspect))
+    );
+  }
+
   .video-lightbox-panel {
     max-height: calc(100dvh - 24px);
   }
@@ -2463,6 +2508,10 @@ footer a:hover {
     line-height: 1.12;
     padding: 4px 8px;
     white-space: nowrap;
+  }
+
+  .video-prompt-long {
+    white-space: normal;
   }
 
   .video-flow .video-prompt,

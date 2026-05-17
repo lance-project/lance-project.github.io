@@ -296,18 +296,23 @@ function initVideoLightbox() {
     showVideo();
 
     const label =
+      item.dataset.previewTitle ||
       item.querySelector(".video-prompt")?.textContent?.trim() ||
       "Video preview";
     const sectionTitle =
       item.closest(".section")?.querySelector(".section-title")?.textContent?.trim() ||
       "Demo";
     const origin = options.origin || item;
+    const fullCaption = getReadableText(item.querySelector(".video-full-caption"));
+    const detailItems = fullCaption
+      ? [...(options.details || []), { label: "Prompt", value: fullCaption }]
+      : options.details;
 
     returnFocusTo = origin;
     shouldRestoreFocus = Boolean(options.restoreFocus);
     title.textContent = options.title || label;
     kicker.textContent = options.kicker || sectionTitle;
-    renderDetails(options.details);
+    renderDetails(detailItems);
     media.src = source.currentSrc || source.getAttribute("src");
     media.poster = source.getAttribute("poster") || "";
     media.muted = true;
