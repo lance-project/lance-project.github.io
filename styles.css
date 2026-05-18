@@ -608,11 +608,23 @@ main {
   width: 22px;
   height: 22px;
   color: currentColor;
+  transform-origin: center;
+}
+
+.paper-icon {
+  width: 21px;
+  height: 21px;
+  transform: translateY(2px);
+}
+
+.github-icon {
+  transform: translateY(1px);
 }
 
 .huggingface-icon {
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
+  transform: translateY(1px);
 }
 
 .link-btn-muted {
