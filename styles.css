@@ -850,6 +850,22 @@ main {
   max-width: 112ch;
 }
 
+.video-processing-note {
+  margin-top: 14px;
+}
+
+.video-processing-note a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.video-processing-note a:hover,
+.video-processing-note a:focus-visible {
+  color: inherit;
+  outline: 0;
+}
+
 .benchmark-overview-copy span {
   display: block;
   white-space: nowrap;
