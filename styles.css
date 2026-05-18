@@ -559,18 +559,20 @@ main {
 }
 
 .link-btn {
-  display: inline-flex;
+  display: inline-grid;
   position: relative;
+  grid-template-columns: 24px auto;
   align-items: center;
-  gap: 9px;
-  min-height: 36px;
+  column-gap: 10px;
+  min-height: 32px;
   border: 0;
   border-radius: 0;
-  padding: 4px 0;
+  padding: 0;
   background: transparent;
   color: #efdca9;
   font-size: 15px;
   font-weight: 700;
+  line-height: 1;
   text-decoration: none;
   transition:
     color 0.2s ease,
@@ -580,10 +582,17 @@ main {
 
 .link-icon-box {
   display: inline-grid;
-  flex: 0 0 22px;
+  grid-column: 1;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+}
+
+.link-btn > span:not(.link-icon-box) {
+  display: inline-block;
+  grid-column: 2;
+  line-height: 1;
+  transform: translateY(1px);
 }
 
 .link-btn:hover,
@@ -596,14 +605,14 @@ main {
 
 .link-icon {
   display: block;
-  width: 21px;
-  height: 21px;
+  width: 22px;
+  height: 22px;
   color: currentColor;
 }
 
 .huggingface-icon {
-  width: 21px;
-  height: 21px;
+  width: 23px;
+  height: 23px;
 }
 
 .link-btn-muted {
