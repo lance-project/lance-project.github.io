@@ -478,6 +478,69 @@ function setLanguageUrl(language) {
   window.history.replaceState(null, "", url);
 }
 
+function getViewportAnchorSnapshot() {
+  const xPoints = [
+    window.innerWidth / 2,
+    window.innerWidth * 0.25,
+    window.innerWidth * 0.75,
+  ];
+  const yPoints = [
+    window.innerHeight * 0.5,
+    Math.max(84, window.innerHeight * 0.35),
+    window.innerHeight * 0.68,
+  ];
+  const anchorSelector = [
+    "tr",
+    ".benchmark-container",
+    "figure",
+    ".image-grid-item",
+    ".video-understanding-card",
+    ".section-copy",
+    ".section-title",
+    "section",
+  ].join(", ");
+
+  for (const y of yPoints) {
+    for (const x of xPoints) {
+      const element = document.elementFromPoint(x, y);
+      if (!element || element.closest(".site-nav, .language-menu, dialog")) {
+        continue;
+      }
+      const anchor = element.closest(anchorSelector) || element;
+      return { element: anchor, top: anchor.getBoundingClientRect().top };
+    }
+  }
+
+  return null;
+}
+
+function restoreViewportAnchor(snapshot) {
+  if (!snapshot?.element?.isConnected) return;
+  const nextTop = snapshot.element.getBoundingClientRect().top;
+  const delta = nextTop - snapshot.top;
+  if (Math.abs(delta) < 0.5) return;
+
+  const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
+  window.scrollBy(0, delta);
+  requestAnimationFrame(() => {
+    document.documentElement.style.scrollBehavior = previousScrollBehavior;
+  });
+}
+
+function restoreScrollPosition(snapshot) {
+  if (!snapshot) return;
+  const previousScrollBehavior = document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior = "auto";
+  window.scrollTo(snapshot.x, snapshot.y);
+  requestAnimationFrame(() => {
+    window.scrollTo(snapshot.x, snapshot.y);
+    requestAnimationFrame(() => {
+      document.documentElement.style.scrollBehavior = previousScrollBehavior;
+    });
+  });
+}
+
 function collectI18nTextNodes() {
   if (i18nTextNodes) return i18nTextNodes;
 
@@ -629,6 +692,9 @@ function updateLanguageControls(language) {
 
 function setLanguage(language, options = {}) {
   const nextLanguage = normalizeLanguage(language) || DEFAULT_LANGUAGE;
+  const viewportAnchor = options.preserveViewport
+    ? getViewportAnchorSnapshot()
+    : null;
   currentLanguage = SUPPORTED_LANGUAGES.has(nextLanguage)
     ? nextLanguage
     : DEFAULT_LANGUAGE;
@@ -648,6 +714,11 @@ function setLanguage(language, options = {}) {
       detail: { language: currentLanguage },
     }),
   );
+
+  if (viewportAnchor) {
+    restoreViewportAnchor(viewportAnchor);
+    requestAnimationFrame(() => restoreViewportAnchor(viewportAnchor));
+  }
 }
 
 function initLanguageSwitcher() {
@@ -662,6 +733,12 @@ function initLanguageSwitcher() {
 
   if (!switcher || !toggle || !menu || !options.length) return;
 
+  const preventMouseFocusScroll = (event) => {
+    if (event.button === 0) {
+      event.preventDefault();
+    }
+  };
+
   const closeMenu = () => {
     switcher.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
@@ -674,22 +751,47 @@ function initLanguageSwitcher() {
     menu.hidden = false;
   };
 
-  toggle.addEventListener("click", () => {
+  const toggleMenu = () => {
     if (switcher.classList.contains("is-open")) {
       closeMenu();
     } else {
       openMenu();
     }
+  };
+
+  const selectOption = (option) => {
+    setLanguage(option.dataset.languageOption, {
+      persist: true,
+      updateUrl: true,
+      preserveViewport: true,
+    });
+    closeMenu();
+    toggle.focus({ preventScroll: true });
+  };
+
+  toggle.addEventListener("mousedown", preventMouseFocusScroll);
+  toggle.addEventListener("click", () => {
+    const scrollSnapshot = { x: window.scrollX, y: window.scrollY };
+    toggleMenu();
+    restoreScrollPosition(scrollSnapshot);
+  });
+  toggle.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    const scrollSnapshot = { x: window.scrollX, y: window.scrollY };
+    toggleMenu();
+    restoreScrollPosition(scrollSnapshot);
   });
 
   options.forEach((option) => {
+    option.addEventListener("mousedown", preventMouseFocusScroll);
+    option.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      selectOption(option);
+    });
     option.addEventListener("click", () => {
-      setLanguage(option.dataset.languageOption, {
-        persist: true,
-        updateUrl: true,
-      });
-      closeMenu();
-      toggle.focus();
+      selectOption(option);
     });
   });
 

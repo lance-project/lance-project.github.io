@@ -580,7 +580,6 @@ html[lang="zh-CN"] body {
 
 html[lang="zh-CN"] .title,
 html[lang="zh-CN"] .nav-brand,
-html[lang="zh-CN"] .section-title,
 html[lang="zh-CN"] .understanding-question,
 html[lang="zh-CN"] .video-understanding-primary {
   font-family:
@@ -589,6 +588,16 @@ html[lang="zh-CN"] .video-understanding-primary {
     "STSong",
     Georgia,
     serif;
+}
+
+html[lang="zh-CN"] .section-title {
+  font-family:
+    "IBM Plex Sans",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  font-weight: 750;
 }
 
 .hero {
