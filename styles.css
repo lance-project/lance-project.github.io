@@ -955,9 +955,7 @@ html[lang="zh-CN"] .section-title {
 
 .research-note {
   max-width: 58ch;
-  margin-top: 18px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(216, 181, 102, 0.16);
+  margin-top: 24px;
   color: var(--text-dim);
   user-select: none;
 }
@@ -2812,6 +2810,13 @@ footer a:hover {
 
   .hero-summary {
     font-size: 16px;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-items: start;
+    gap: 16px 32px;
   }
 
   .hero-showcase {
