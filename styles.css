@@ -645,7 +645,7 @@ html[lang="zh-CN"] .section-title {
   z-index: 2;
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(34px, 5vw, 76px);
 }
 
@@ -833,6 +833,7 @@ html[lang="zh-CN"] .section-title {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   min-width: 0;
+  margin-top: 13px;
   animation: rise-in 0.72s 0.1s ease both;
 }
 
@@ -950,6 +951,75 @@ html[lang="zh-CN"] .section-title {
 .showcase-card-fill:hover .showcase-video,
 .showcase-card-fill:focus-visible .showcase-video {
   transform: scale(1.04);
+}
+
+.research-note {
+  max-width: 58ch;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(216, 181, 102, 0.16);
+  color: var(--text-dim);
+  user-select: none;
+}
+
+.research-note summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  list-style: none;
+  color: rgba(201, 192, 171, 0.82);
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.research-note summary::-webkit-details-marker {
+  display: none;
+}
+
+.research-note summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  color: rgba(216, 181, 102, 0.62);
+  transform: translateY(-2px) rotate(45deg);
+  transform-origin: 50% 50%;
+  transition:
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.research-note[open] summary::after {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.research-note summary:hover,
+.research-note summary:focus-visible {
+  color: #eee3c7;
+  outline: 0;
+}
+
+.research-note-label {
+  color: rgba(245, 236, 216, 0.9);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.research-note-summary {
+  color: var(--text-dim);
+}
+
+.research-note p {
+  margin: 10px 0 0;
+  color: var(--text-dim);
+  font-size: 12.5px;
+  line-height: 1.66;
 }
 
 @keyframes rise-in {
@@ -2555,6 +2625,7 @@ footer a:hover {
 
   .hero-showcase {
     max-width: 680px;
+    margin-top: 0;
   }
 
   .section {

@@ -103,6 +103,11 @@ const i18nText = {
     "Intelligent Creation Team, ByteDance": "字节跳动智能创作团队",
     "Lance is a 3B native unified multimodal model for image and video understanding, generation, and editing, trained from scratch within a training budget of no more than 128 GPUs using a staged multi-task recipe.":
       "Lance 是一个 3B 原生统一多模态模型，面向图像与视频的理解、生成和编辑任务，并通过阶段式多任务训练方案，在不超过 128 张 GPU 的训练预算内从头训练完成。",
+    "Note:": "说明：",
+    "Lance is a research project rather than a polished product model.":
+      "Lance 是一个研究项目，而不是经过充分产品化打磨的模型。",
+    "The released checkpoint was trained with up to 128 A100 GPUs, with training conducted up to 768x768 image generation and 480p, 12 FPS video generation. Our goal is to share a research artifact for studying unified image/video understanding, generation, and editing under a relatively small model and limited compute budget. Output quality may vary across prompts, resolutions, duration, motion complexity, and editing scenarios, and we see further opportunities to improve the post-training recipe. We appreciate constructive feedback from the community as we continue improving the project.":
+      "开源 checkpoint 的训练使用最多 128 张 A100 GPU，训练阶段覆盖最高 768x768 图像生成，以及 480p、12 FPS 视频生成。我们的目标是在相对较小模型规模和有限算力预算下，分享一个用于研究统一图像/视频理解、生成与编辑的研究 artifact。输出质量可能会因提示词、分辨率、时长、运动复杂度和编辑场景而变化，后训练方案也仍有进一步改进空间。欢迎社区提供建设性反馈，帮助我们持续改进项目。",
     "Paper": "论文",
     "Code": "代码",
     "Hugging Face": "Hugging Face",
@@ -367,6 +372,7 @@ const i18nAttributes = {
     "Image sections": "图像章节",
     "Benchmark sections": "评测章节",
     "More sections": "更多章节",
+    "Research note": "研究说明",
     "Select language": "选择语言",
     "Language options": "语言选项",
     "Representative Lance outputs": "Lance 代表性输出",
