@@ -2813,10 +2813,27 @@ footer a:hover {
   }
 
   .links {
-    display: grid;
-    grid-template-columns: repeat(2, max-content);
-    justify-items: start;
-    gap: 16px 32px;
+    flex-wrap: nowrap;
+    gap: 16px;
+  }
+
+  .link-btn {
+    grid-template-columns: 20px auto;
+    column-gap: 7px;
+    min-height: 28px;
+    font-size: 14px;
+  }
+
+  .link-icon-box,
+  .link-icon,
+  .huggingface-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .paper-icon {
+    width: 19px;
+    height: 19px;
   }
 
   .hero-showcase {
@@ -3114,6 +3131,28 @@ footer a:hover {
 }
 
 @media (max-width: 360px) {
+  .links {
+    gap: 10px;
+  }
+
+  .link-btn {
+    grid-template-columns: 18px auto;
+    column-gap: 5px;
+    font-size: 13px;
+  }
+
+  .link-icon-box,
+  .link-icon,
+  .huggingface-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .paper-icon {
+    width: 17px;
+    height: 17px;
+  }
+
   #multi-round-editing .video-flow-linear {
     grid-template-columns: 1fr;
     gap: 10px;
