@@ -935,8 +935,56 @@ function initVideoLightbox() {
   let isClosing = false;
   let lockedScroll = null;
   let lockedBodyStyles = null;
+  let isViewportSyncing = false;
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const touchQuery = window.matchMedia("(hover: none)");
+  const visualViewport = window.visualViewport;
+
+  const syncLightboxViewport = () => {
+    const viewport = visualViewport;
+    const width = viewport?.width || window.innerWidth;
+    const height = viewport?.height || window.innerHeight;
+    const offsetLeft = viewport?.offsetLeft || 0;
+    const offsetTop = viewport?.offsetTop || 0;
+
+    dialog.style.setProperty("--lightbox-visual-width", `${width}px`);
+    dialog.style.setProperty("--lightbox-visual-height", `${height}px`);
+    dialog.style.setProperty(
+      "--lightbox-visual-center-x",
+      `${offsetLeft + width / 2}px`,
+    );
+    dialog.style.setProperty(
+      "--lightbox-visual-center-y",
+      `${offsetTop + height / 2}px`,
+    );
+    dialog.style.setProperty("--lightbox-visual-left", `${offsetLeft}px`);
+    dialog.style.setProperty("--lightbox-visual-top", `${offsetTop}px`);
+  };
+
+  const startLightboxViewportSync = () => {
+    syncLightboxViewport();
+    if (!visualViewport || isViewportSyncing) return;
+
+    visualViewport.addEventListener("resize", syncLightboxViewport);
+    visualViewport.addEventListener("scroll", syncLightboxViewport);
+    isViewportSyncing = true;
+  };
+
+  const stopLightboxViewportSync = () => {
+    if (visualViewport && isViewportSyncing) {
+      visualViewport.removeEventListener("resize", syncLightboxViewport);
+      visualViewport.removeEventListener("scroll", syncLightboxViewport);
+    }
+    isViewportSyncing = false;
+    [
+      "--lightbox-visual-width",
+      "--lightbox-visual-height",
+      "--lightbox-visual-center-x",
+      "--lightbox-visual-center-y",
+      "--lightbox-visual-left",
+      "--lightbox-visual-top",
+    ].forEach((property) => dialog.style.removeProperty(property));
+  };
 
   const setLightboxAspect = (width, height) => {
     if (!width || !height) return;
@@ -1084,9 +1132,11 @@ function initVideoLightbox() {
 
   const openDialog = (origin, scrollSnapshot = null) => {
     if (dialog.open) return;
+    startLightboxViewportSync();
     lockPageScroll(scrollSnapshot);
     dialog.showModal();
     requestAnimationFrame(() => {
+      syncLightboxViewport();
       animatePanelFromOrigin(origin);
     });
   };
@@ -1129,6 +1179,7 @@ function initVideoLightbox() {
     if (dialog.open) {
       dialog.close();
     }
+    stopLightboxViewportSync();
     unlockPageScroll();
     details.hidden = true;
     details.replaceChildren();

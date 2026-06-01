@@ -3143,29 +3143,41 @@ footer a:hover {
   }
 
   .video-lightbox {
-    inset: 12px auto auto 50%;
+    inset:
+      var(--lightbox-visual-center-y, 50dvh) auto auto
+      var(--lightbox-visual-center-x, 50vw);
     width: min(
-      calc(100vw - 24px),
+      calc(var(--lightbox-visual-width, 100vw) - 24px),
       1120px,
-      calc((100dvh - var(--lightbox-caption-space) - 24px) * var(--media-aspect))
+      calc(
+        (
+          var(--lightbox-visual-height, 100dvh) -
+            var(--lightbox-caption-space) - 24px
+        ) * var(--media-aspect)
+      )
     );
-    max-height: calc(100dvh - 24px);
-    transform: translateX(-50%);
+    max-height: calc(var(--lightbox-visual-height, 100dvh) - 24px);
+    transform: translate(-50%, -50%);
   }
 
   .video-lightbox.has-qa-details {
-    width: calc(100vw - 24px);
+    width: calc(var(--lightbox-visual-width, 100vw) - 24px);
   }
 
   .video-lightbox.has-qa-details .video-lightbox-media {
     width: min(
       100%,
-      calc((100dvh - var(--lightbox-caption-space) - 24px) * var(--media-aspect))
+      calc(
+        (
+          var(--lightbox-visual-height, 100dvh) -
+            var(--lightbox-caption-space) - 24px
+        ) * var(--media-aspect)
+      )
     );
   }
 
   .video-lightbox-panel {
-    max-height: calc(100dvh - 24px);
+    max-height: calc(var(--lightbox-visual-height, 100dvh) - 24px);
   }
 
   .video-lightbox-close {
@@ -3174,11 +3186,13 @@ footer a:hover {
   }
 
   .video-lightbox.is-image-mode {
-    inset: 8px auto auto 8px;
-    width: calc(100vw - 16px);
+    inset:
+      calc(var(--lightbox-visual-top, 0px) + 8px) auto auto
+      calc(var(--lightbox-visual-left, 0px) + 8px);
+    width: calc(var(--lightbox-visual-width, 100vw) - 16px);
     height: auto;
     max-height: calc(100vh - 16px);
-    max-height: calc(100dvh - 16px);
+    max-height: calc(var(--lightbox-visual-height, 100dvh) - 16px);
     transform: none;
   }
 
@@ -3186,7 +3200,7 @@ footer a:hover {
     align-items: center;
     height: auto;
     max-height: calc(100vh - 16px);
-    max-height: calc(100dvh - 16px);
+    max-height: calc(var(--lightbox-visual-height, 100dvh) - 16px);
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
