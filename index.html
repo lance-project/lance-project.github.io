@@ -180,6 +180,7 @@
             <a class="nav-link" href="#videos">Videos</a>
             <div class="nav-submenu" aria-label="Video sections">
               <a href="#videos">Text-to-Video</a>
+              <a href="#image-to-video">Image-to-Video</a>
               <a href="#video-editing">Video Editing</a>
               <a href="#multi-round-editing">Multi-turn Editing</a>
               <a href="#intelligent-video">Intelligent Video</a>
@@ -819,6 +820,380 @@
             >2x super-resolution</a
           >
           and
+          <a
+            href="https://github.com/hzwer/ECCV2022-RIFE"
+            target="_blank"
+            rel="noopener noreferrer"
+            >2x frame interpolation</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-video section-centered" id="image-to-video">
+      <div class="container">
+        <h2 class="section-title">Image-to-Video</h2>
+        <p class="section-copy">
+          Starting from a single image, Lance preserves subject identity and
+          scene composition while synthesizing natural motion, camera movement,
+          and temporal detail.
+        </p>
+        <div class="i2v-grid">
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00001.webp"
+                    alt="Snow leopard standing on a glacier before leaping"
+                    width="1080"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Snow leopard leap"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000001.mp4"
+                    data-poster="assets/image2video/posters/000001.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Snow leopard leap</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A snow leopard stands calmly near the edge of a glacier,
+                  observing the icy gap ahead. The snow leopard remains the
+                  dominant main subject throughout the entire sequence, shown in
+                  a medium-close to medium framing and occupying a strong,
+                  consistent portion of the frame. Its anatomy, body
+                  proportions, fur pattern, facial features, tail, and limbs
+                  remain visually consistent and anatomically correct at all
+                  times, with no distortion, shrinking, or unnatural
+                  deformation. The environment is a vast frozen glacier canyon
+                  with layered ice cliffs, deep blue crevasses, snow-covered
+                  ledges, drifting snow particles, and distant snowy ridges
+                  under a pale winter sky. Soft golden side light illuminates
+                  the snow leopard's fur and creates subtle highlights across
+                  the ice surfaces. After a brief pause, the snow leopard
+                  performs a smooth, controlled slow-motion leap to the glacier
+                  on the opposite side. The motion is gentle and physically
+                  natural, with a soft push-off, subtle tail balance, and clear
+                  readable body movement. The camera smoothly follows the snow
+                  leopard and does not pull back to a wide distant view. The
+                  landing area on the opposite glacier remains relatively close
+                  in screen space, so the snow leopard stays large and
+                  prominent. After landing, the snow leopard remains a large
+                  foreground or mid-foreground subject, occupying about one-half
+                  to two-thirds of the frame, while the camera stays close and
+                  stable or slightly tracks forward. It lands steadily and
+                  returns to a calm stable stance. The glacier walls, snow
+                  surfaces, and distant ice formations remain visually stable
+                  without cracking or collapsing. The environment maintains soft
+                  natural motion with realistic snow atmosphere and physically
+                  consistent animal movement.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00003.webp"
+                    alt="Emperor penguin standing beside calm icy water"
+                    width="1280"
+                    height="698"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Penguin dive"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000003.mp4"
+                    data-poster="assets/image2video/posters/000003.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Penguin dive</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A cinematic polar wildlife shot shows an emperor penguin
+                  standing near the edge of a flat ice shelf beside calm icy
+                  water, with its reflection clearly visible on the smooth
+                  blue-gray surface below. The penguin is the clear main
+                  subject, featuring a black head, white chest, soft yellow neck
+                  markings, a compact upright body, small dark feet, and smooth
+                  feather texture. The surrounding environment is cold, quiet,
+                  and minimal, with pale snow-covered ice, a slightly uneven
+                  frozen edge, distant flat ice fields, and soft overcast light
+                  creating a calm Antarctic atmosphere. The water remains still
+                  and reflective, with faint ripples near the ice edge and
+                  subtle texture across the surface. The scene feels clean,
+                  realistic, and highly detailed, keeping the penguin large and
+                  readable against the simple polar landscape. steady camera.
+                  The penguin slowly shifts its body toward the water, takes a
+                  small careful step at the edge, then gently hops into the
+                  water in a clear and natural motion. As it enters, a modest
+                  splash rises around its body and spreads outward into soft
+                  ripples, briefly breaking the reflection. The surrounding ice
+                  remains stable, the water movement stays physically natural,
+                  and the overall scene remains calm and believable.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00006.webp"
+                    alt="Forest elf girl surrounded by fireflies"
+                    width="1280"
+                    height="698"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Firefly forest turn"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000006.mp4"
+                    data-poster="assets/image2video/posters/000006.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Firefly forest turn</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A premium fantasy-anime shot shows a young forest elf girl
+                  standing in a glowing enchanted woodland, surrounded by tall
+                  dark trees, twisting branches, soft moss, lush plants, and
+                  countless floating fireflies. She is the clear main subject,
+                  positioned slightly to the right of center, with long flowing
+                  green hair, pointed elf ears, delicate facial features, large
+                  expressive eyes, and a small flower ornament near her hair. She
+                  wears an elegant green-and-white fantasy dress with gold trim,
+                  translucent sleeves, a jeweled collar detail, and soft layered
+                  fabric that catches the turquoise forest light. The background
+                  is deep and magical, with misty blue-green atmosphere, layered
+                  tree trunks fading into the distance, glowing particles, and
+                  warm firefly lights scattered throughout the scene. The
+                  lighting is dreamy and luminous, with a bright teal glow behind
+                  her creating a soft halo effect and subtle highlights on her
+                  hair, face, and dress. The scene feels peaceful, magical, and
+                  highly detailed, with refined color contrast, rich forest
+                  textures, and a strong main-subject presence. gentle tracking
+                  shot. She steps forward, then slowly turns her head to follow
+                  a cluster of fireflies crossing in front of her. Her
+                  expression stays quiet and curious while the teal light
+                  outlines her face and dress.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00007.webp"
+                    alt="Full-body portrait of a woman in a simple modern room"
+                    width="480"
+                    height="720"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Hair-smoothing portrait"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000007.mp4"
+                    data-poster="assets/image2video/posters/000007.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Hair-smoothing portrait</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A detailed cinematic full-body portrait shows a young woman
+                  standing indoors in a simple modern room, facing the camera
+                  with a calm and pleasant expression. She has long brown hair
+                  falling naturally over her shoulders, warm brown eyes, natural
+                  skin texture, and a relaxed upright posture. She wears a
+                  fitted black sleeveless top, light blue high-waisted jeans,
+                  and clean white sneakers. One hand is gently raised near the
+                  side of her head, while the other arm rests naturally by her
+                  side. The background is minimal and softly lit, with a plain
+                  light-colored wall, warm wooden floor, white baseboard, soft
+                  daylight entering from the left, and a green potted plant near
+                  the window adding a natural detail. The subject remains the
+                  clear main focus, centered in the frame with stable body
+                  proportions, clear facial detail, natural hands, and realistic
+                  clothing texture. slow push-in shot. She slowly and gently
+                  lifts her hand to lightly smooth her hair beside her head in a
+                  soft, graceful motion. She looks toward the camera and
+                  gradually shows a warm subtle smile, with slight natural
+                  blinking and a relaxed presence. As the action continues, the
+                  camera gradually moves closer from the full-body view toward
+                  her face, bringing more attention to her expression while the
+                  room remains calm and stable.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00008.webp"
+                    alt="Ginger cat sleeping on a sunlit wooden windowsill"
+                    width="1280"
+                    height="698"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Sleeping cat ambience"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000008.mp4"
+                    data-poster="assets/image2video/posters/000008.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Sleeping cat ambience</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A warm cinematic interior shot shows a ginger cat sleeping
+                  peacefully on a sunlit wooden windowsill beside indoor plants
+                  and a wooden cabinet. The cat is the clear main subject,
+                  curled comfortably with soft orange fur, a striped tail,
+                  relaxed paws, closed eyes, and gentle breathing. Sunlight
+                  enters from the window, casting warm golden highlights across
+                  the cat's fur, the polished wood, and nearby green leaves. The
+                  room feels quiet and cozy, with potted plants, soft shadows,
+                  natural window light, and warm wooden textures creating a
+                  peaceful domestic atmosphere. The background remains simple
+                  and stable, keeping attention on the sleeping cat while adding
+                  natural detail and depth. steady cozy shot. The curled cat
+                  stays relaxed, eyes opened, with a slow rise and fall of its
+                  body. The nearby plants move faintly, and warm wood textures
+                  remain stable.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+          <article class="i2v-card">
+            <div class="i2v-flow">
+              <div class="i2v-unit">
+                <figure class="i2v-panel i2v-input-panel">
+                  <img
+                    src="assets/image2video/inputs/00009.webp"
+                    alt="Waterfall and rainbow in a lush canyon"
+                    width="1280"
+                    height="698"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <span class="i2v-panel-label">Input image</span>
+              </div>
+              <span class="i2v-arrow" aria-hidden="true"></span>
+              <div
+                class="i2v-unit i2v-video-unit video-item"
+                data-preview-title="Rainbow waterfall motion"
+              >
+                <div class="i2v-panel i2v-video-panel">
+                  <video
+                    data-src="assets/image2video/videos-h264/000009.mp4"
+                    data-poster="assets/image2video/posters/000009.webp"
+                    loop
+                    muted
+                    playsinline
+                    preload="none"
+                  ></video>
+                  <div class="video-prompt">Rainbow waterfall motion</div>
+                </div>
+                <p class="video-full-caption" hidden>
+                  A cinematic landscape shot shows a powerful waterfall
+                  plunging from a high moss-covered cliff into a misty river
+                  basin below, surrounded by lush green canyon walls, dark wet
+                  rock textures, and soft overcast daylight. A bright rainbow
+                  arches clearly across the lower mist in front of the waterfall,
+                  with vivid bands of red, orange, yellow, green, blue, and
+                  violet standing out against the white spray. The waterfall
+                  remains the dominant visual focus, with thick streams of white
+                  water pouring straight down in a continuous curtain, while
+                  mist rises and spreads across the base. The foreground shows a
+                  shallow rocky riverbank with dark pebbles and scattered
+                  stones, while the background is filled with layered green
+                  slopes, damp cliff faces, and soft atmospheric haze. The scene
+                  is majestic, fresh, and highly detailed, with rich natural
+                  textures, luminous mist, and a bright, clearly visible rainbow
+                  adding a vivid magical accent to the realistic landscape. calm
+                  cinematic shot. The waterfall, mist, and river move
+                  continuously while the surrounding moss-covered rock walls stay
+                  still. The rainbow gently flickers within the spray under soft
+                  daylight.
+                </p>
+                <span class="i2v-panel-label">Generated video</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="benchmark-note video-processing-note">
+          Video is displayed with
           <a
             href="https://github.com/hzwer/ECCV2022-RIFE"
             target="_blank"

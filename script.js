@@ -84,6 +84,7 @@ const i18nText = {
     "Overview": "概览",
     "Videos": "视频",
     "Text-to-Video": "文本到视频",
+    "Image-to-Video": "图像到视频",
     "Video Editing": "视频编辑",
     "Multi-turn Editing": "多轮编辑",
     "Intelligent Video": "智能视频",
@@ -115,6 +116,10 @@ const i18nText = {
     "Video Reasoning": "视频推理",
     "Nine text-conditioned cases focused on character motion, fantasy animals, two-person interaction, and cinematic dreamlike scenes.":
       "九个文本条件生成案例，聚焦角色运动、幻想动物、双人互动和电影感梦境场景。",
+    "Starting from a single image, Lance preserves subject identity and scene composition while synthesizing natural motion, camera movement, and temporal detail.":
+      "从单张输入图像出发，Lance 在保持主体身份和场景构图的同时，合成自然运动、镜头变化和时序细节。",
+    "Input image": "输入图像",
+    "Generated video": "生成视频",
     "Displayed with": "展示结果经过",
     "2x super-resolution": "2 倍超分辨率",
     "2x frame interpolation": "2 倍帧插值",
@@ -376,11 +381,22 @@ const i18nAttributes = {
     "Language options": "语言选项",
     "Representative Lance outputs": "Lance 代表性输出",
     "Jump to Text-to-Video examples": "跳转到文本到视频示例",
+    "Jump to Image-to-Video examples": "跳转到图像到视频示例",
     "Jump to Video Editing examples": "跳转到视频编辑示例",
     "Jump to Intelligent Video Generation examples": "跳转到智能视频生成示例",
     "Surfing red panda text-to-video preview": "冲浪小熊猫文本到视频预览",
     "Dog to cat subject replacement video editing preview": "狗替换为猫的视频编辑预览",
     "6x6 maze planning video generation preview": "6x6 迷宫规划视频生成预览",
+    "Snow leopard standing on a glacier before leaping":
+      "站在冰川上准备跳跃的雪豹",
+    "Emperor penguin standing beside calm icy water":
+      "站在平静冰水旁的帝企鹅",
+    "Forest elf girl surrounded by fireflies": "萤火虫环绕的森林精灵少女",
+    "Full-body portrait of a woman in a simple modern room":
+      "现代简洁房间中的女子全身人像",
+    "Ginger cat sleeping on a sunlit wooden windowsill":
+      "阳光木质窗台上熟睡的橘猫",
+    "Waterfall and rainbow in a lush canyon": "葱郁峡谷中的瀑布和彩虹",
     "Text-to-Image": "文本到图像",
     "Image editing examples": "图像编辑示例",
     "Pie chart used for segment comparison reasoning": "用于扇区比较推理的饼图",
@@ -401,6 +417,12 @@ const i18nAttributes = {
     "Copy failed": "复制失败",
     "Close preview": "关闭预览",
     "System prompt": "系统提示词",
+    "Snow leopard leap": "雪豹跳跃",
+    "Penguin dive": "企鹅入水",
+    "Firefly forest turn": "萤火森林转身",
+    "Hair-smoothing portrait": "拂发人像",
+    "Sleeping cat ambience": "熟睡猫咪氛围",
+    "Rainbow waterfall motion": "彩虹瀑布动态",
     "Background transformation": "背景变换",
     "Object addition": "添加物体",
     "Character replacement": "角色替换",
@@ -1251,6 +1273,7 @@ function initImageLightbox(openImage) {
         ".image-editing-img",
         ".framework-img",
         ".benchmark-radar-img",
+        "#image-to-video .i2v-input-panel img",
       ].join(", "),
     ),
   );
