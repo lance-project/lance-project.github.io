@@ -1273,6 +1273,7 @@ function initImageLightbox(openImage) {
         ".image-editing-img",
         ".framework-img",
         ".benchmark-radar-img",
+        "#image-to-video .i2v-input-panel img",
       ].join(", "),
     ),
   );
