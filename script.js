@@ -936,6 +936,7 @@ function initVideoLightbox() {
   let lockedScroll = null;
   let lockedBodyStyles = null;
   const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const touchQuery = window.matchMedia("(hover: none)");
 
   const setLightboxAspect = (width, height) => {
     if (!width || !height) return;
@@ -984,7 +985,11 @@ function initVideoLightbox() {
   };
 
   const animatePanelFromOrigin = (origin, reverse = false) => {
-    if (motionQuery.matches || typeof panel.animate !== "function") {
+    if (
+      motionQuery.matches ||
+      touchQuery.matches ||
+      typeof panel.animate !== "function"
+    ) {
       return Promise.resolve();
     }
 

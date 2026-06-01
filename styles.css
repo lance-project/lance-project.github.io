@@ -2722,7 +2722,7 @@ footer a:hover {
   }
 
   .i2v-video-unit .video-prompt {
-    transform: none;
+    transform: translate(-50%, 0);
   }
 
   .video-lightbox-close,
@@ -3143,12 +3143,14 @@ footer a:hover {
   }
 
   .video-lightbox {
+    inset: 12px auto auto 50%;
     width: min(
       calc(100vw - 24px),
       1120px,
       calc((100dvh - var(--lightbox-caption-space) - 24px) * var(--media-aspect))
     );
     max-height: calc(100dvh - 24px);
+    transform: translateX(-50%);
   }
 
   .video-lightbox.has-qa-details {
