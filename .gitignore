@@ -47,3 +47,8 @@ coverage/
 outputs/
 output/
 .playwright-cli/
+
+# Raw source assets for generated image-to-video showcase media
+assets/image2video/I2V图/
+assets/image2video/ff2v_expand_61frame_final_FG/
+assets/image2video/ff2v_expand_61frame_final_FG_SP_2x/
