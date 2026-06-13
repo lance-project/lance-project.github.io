@@ -2472,6 +2472,10 @@ html[lang="zh-CN"] .section-title {
   background: #292313 !important;
 }
 
+#citation .section-title {
+  margin-bottom: 22px;
+}
+
 .citation-card {
   position: relative;
   padding: 0;
@@ -2531,14 +2535,15 @@ html[lang="zh-CN"] .section-title {
   border-left: 2px solid rgba(216, 181, 102, 0.34);
   background: rgba(255, 255, 255, 0.025);
   color: #e7dfcf;
-  padding: 16px 58px 16px 18px;
+  padding: 22px 64px 22px 24px;
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     monospace;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.65;
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
+  white-space: pre;
+  scrollbar-color: rgba(216, 181, 102, 0.42) rgba(255, 255, 255, 0.04);
+  scrollbar-width: thin;
 }
 
 .citation-block code {
@@ -3255,8 +3260,9 @@ footer a:hover {
     line-height: 1.45;
   }
 
-  .citation-card {
-    padding: 12px;
+  .citation-block {
+    padding: 18px 56px 18px 18px;
+    font-size: 12px;
   }
 
   .video-lightbox {
