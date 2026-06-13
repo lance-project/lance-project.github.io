@@ -870,7 +870,7 @@ function initLazyMedia() {
       });
     },
     {
-      rootMargin: "400px 0px",
+      rootMargin: "100px 0px",
       threshold: 0.01,
     },
   );
