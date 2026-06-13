@@ -102,6 +102,7 @@ const i18nText = {
     "Corresponding authors": "通讯作者",
     "Project lead": "项目负责人",
     "Intelligent Creation Lab, ByteDance": "字节跳动智能创作实验室",
+    "Published May 18, 2026": "发布于 2026 年 5 月 18 日",
     "Lance is a 3B native unified multimodal model for image and video understanding, generation, and editing, trained from scratch within a training budget of no more than 128 GPUs using a staged multi-task recipe.":
       "Lance 是一个 3B 原生统一多模态模型，面向图像与视频的理解、生成和编辑任务，并通过阶段式多任务训练方案，在不超过 128 张 GPU 的训练预算内从头训练完成。",
     "Note:": "说明：",

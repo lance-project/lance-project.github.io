@@ -678,8 +678,8 @@ html[lang="zh-CN"] .section-title {
 }
 
 .authors-line {
-  margin: 4px 0;
-  line-height: 1.62;
+  margin: 3px 0;
+  line-height: 1.58;
 }
 
 .authors-line > strong,
@@ -687,55 +687,151 @@ html[lang="zh-CN"] .section-title {
   white-space: nowrap;
 }
 
+.authors-line > strong,
+.author-name {
+  font-weight: 600;
+}
+
 .authors-line-secondary {
-  color: var(--text-muted);
+  color: rgba(201, 192, 171, 0.84);
   font-size: 0.96em;
 }
 
 .author-link {
   text-decoration: none;
+  border-radius: 2px;
 }
 
 .author-link .author-name {
-  border-bottom: 1px solid rgba(216, 181, 102, 0.42);
-  padding-bottom: 1px;
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  transition:
+    color 0.18s ease,
+    text-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 
-.author-link:hover .author-name {
-  border-bottom-color: rgba(238, 242, 247, 0.88);
+.author-link .author-name::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  z-index: -1;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(216, 181, 102, 0),
+    rgba(216, 181, 102, 0.48),
+    rgba(216, 181, 102, 0)
+  );
+  opacity: 0.62;
+  transform: scaleX(0.72);
+  transform-origin: left center;
+  transition:
+    filter 0.18s ease,
+    height 0.18s ease,
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.author-link:hover .author-name,
+.author-link:focus-visible .author-name {
+  color: #fff7e1;
+  text-shadow:
+    0 0 12px rgba(216, 181, 102, 0.28),
+    0 0 28px rgba(216, 181, 102, 0.16);
+  transform: translateY(-1px);
+}
+
+.author-link:hover .author-name::after,
+.author-link:focus-visible .author-name::after {
+  height: 5px;
+  opacity: 1;
+  filter: drop-shadow(0 0 7px rgba(216, 181, 102, 0.34));
+  transform: scaleX(1.08);
+}
+
+.author-link:focus-visible {
+  outline: 1px solid rgba(216, 181, 102, 0.5);
+  outline-offset: 3px;
 }
 
 .author-mark {
   margin-left: 2px;
   color: var(--accent);
+  display: inline-block;
   font-size: 0.72em;
   font-weight: 700;
+  transition:
+    color 0.18s ease,
+    text-shadow 0.18s ease,
+    transform 0.18s ease;
   vertical-align: super;
+}
+
+.authors-line .author-link:hover + .author-mark,
+.authors-line .author-link:focus-visible + .author-mark {
+  color: #f5d58a;
+  text-shadow: 0 0 14px rgba(216, 181, 102, 0.24);
+  transform: translateY(-1px);
 }
 
 .author-notes {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 10px;
-  color: var(--text-dim);
+  margin-top: 8px;
+  color: rgba(145, 134, 110, 0.9);
   font-size: 12px;
+  font-weight: 500;
 }
 
 .author-notes span {
   padding: 0;
 }
 
-.affiliation {
-  margin: 14px 0 12px;
-  color: var(--text-muted);
+.author-notes .author-mark {
+  color: rgba(216, 181, 102, 0.7);
+}
+
+.hero-publication {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 16px 0 18px;
+  color: rgba(201, 192, 171, 0.82);
   font-size: 13px;
   line-height: 1.5;
 }
 
+.affiliation {
+  margin: 0;
+  color: inherit;
+}
+
+.affiliation::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  margin: 0 0 3px 12px;
+  border-radius: 50%;
+  background: rgba(216, 181, 102, 0.42);
+}
+
+.hero-meta {
+  margin: 0;
+  color: rgba(201, 192, 171, 0.58);
+  font-weight: 400;
+}
+
 .hero-summary {
   max-width: 58ch;
-  color: var(--text-muted);
+  color: #d7cfbd;
   font-size: 16px;
   line-height: 1.68;
 }
@@ -3003,10 +3099,31 @@ footer a:hover {
 
   .authors-line,
   .authors-line-secondary span,
+  .hero-publication,
   .affiliation,
+  .hero-meta,
   .hero-summary {
     max-width: 100%;
     overflow-wrap: anywhere;
+  }
+
+  .hero-publication {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    font-size: clamp(11px, 2.9vw, 13px);
+    white-space: nowrap;
+  }
+
+  .hero-publication .affiliation,
+  .hero-publication .hero-meta {
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+
+  .affiliation::after {
+    margin-right: 6px;
+    margin-left: 6px;
   }
 
   .authors-line > strong,
